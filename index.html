@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CAPITALINVEST — Bourse & Investissement</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --brand: #0b6f2b;
@@ -16,107 +16,143 @@
       --white: #ffffff;
       --border-light: #e5e7eb;
     }
-    * {box-sizing: border-box;}
-    body { margin:0; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text-dark); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+    a { text-decoration: none; }
     header {
       background: var(--brand);
       color: var(--white);
       padding: 20px 0;
       text-align: center;
     }
-    header .logo { font-size: 28px; font-weight: 800; }
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+    }
     nav {
       background: var(--white);
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     nav ul {
-      list-style:none;
-      margin:0; padding:0;
-      display:flex; justify-content:center;
+      display: flex;
+      justify-content: center;
+      list-style: none;
       gap: 30px;
+      padding: 14px 0;
     }
     nav a {
-      text-decoration:none; color: var(--text-dark);
-      font-weight:600; padding:14px 8px;
+      color: var(--text-dark);
+      font-weight: 600;
+      padding: 10px;
     }
     nav a:hover, nav a.active {
       color: var(--brand);
       border-bottom: 3px solid var(--brand);
     }
-    .container { max-width: 1200px; margin:0 auto; padding:20px; }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
     .hero {
       background: linear-gradient(135deg, var(--brand-dark), var(--brand));
       color: var(--white);
       padding: 60px 20px;
-      text-align: center;
       border-radius: 10px;
+      text-align: center;
     }
-    .hero h1 { margin:0; font-size:36px; }
-    .hero p { font-size:18px; margin-top:12px; }
-
-    .services, .markets, .clients, .testimonials, .about {
-      margin-top:40px;
+    .hero h1 { font-size: 36px; margin-bottom: 12px; }
+    .hero p { font-size: 18px; }
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      background: var(--brand);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      margin-top: 16px;
+      cursor: pointer;
     }
-
-    .services .service-cards {
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px;
+    .btn.secondary {
+      background: transparent;
+      color: var(--brand);
+      border: 1px solid var(--brand);
     }
-    .service-card {
-      background: var(--white); border-radius:8px; padding:24px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    section { margin-top: 40px; }
+    h2 { margin-bottom: 20px; color: var(--brand-dark); }
+    .service-cards, .client-cards, .testimonial-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
     }
-    .service-card h3 { color: var(--brand); margin-bottom:12px; }
-    .service-card p { color: var(--text-muted); }
-
+    .service-card, .testimonial-card, .client-card {
+      background: var(--white);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    }
+    .service-card h3, .testimonial-card .author {
+      color: var(--brand);
+    }
+    .testimonial-card p {
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+    .client-card img {
+      width: 80px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+    .client-card .name {
+      margin-top: 10px;
+      font-weight: 600;
+    }
     .markets table {
-      width:100%; border-collapse: collapse; background: var(--white);
-      box-shadow:0 4px 14px rgba(0,0,0,0.05);
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      background: var(--white);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
     }
     .markets th, .markets td {
-      padding:12px 15px; text-align:left; border-bottom:1px solid var(--border-light);
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-light);
     }
     .markets th {
-      background: var(--brand); color: var(--white);
+      background: var(--brand);
+      color: var(--white);
     }
-    .markets tr:hover {
-      background: #f1f5f9;
+    .price-up { color: green; font-weight: 700; }
+    .price-down { color: red; font-weight: 700; }
+    .about, .contact {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
     }
-    .price-up { color: green; font-weight:700; }
-    .price-down { color: red; font-weight:700; }
-
-    .clients .client-cards {
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px;
+    form input, form select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 16px;
+      border: 1px solid var(--border-light);
+      border-radius: 4px;
     }
-    .client-card {
-      background: var(--white); padding:18px; border-radius:8px; text-align:center;
-      box-shadow:0 2px 8px rgba(0,0,0,0.05);
-    }
-    .client-card img { width:80px; height:50px; object-fit:cover; border-radius:4px; }
-    .client-card .name { margin-top:10px; font-weight:600; }
-
-    .testimonials .testimonial-list {
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px;
-    }
-    .testimonial-card {
-      background: var(--white); border-left:4px solid var(--brand); padding:20px; border-radius:6px;
-    }
-    .testimonial-card p { font-style:italic; margin:0 0 10px; color: var(--text-dark); }
-    .testimonial-card .author { font-weight:700; color: var(--brand-dark); }
-
-    .about {
-      background: var(--white); padding:30px; border-radius:8px;
-      box-shadow:0 4px 14px rgba(0,0,0,0.05);
-    }
-    .about h2 { margin-top:0; color: var(--brand); }
+    label { font-weight: 600; }
     .footer {
-      margin-top:60px; text-align:center; padding:20px; color: var(--text-muted); font-size:14px;
+      text-align: center;
+      margin-top: 60px;
+      padding: 20px;
+      color: var(--text-muted);
+      font-size: 14px;
     }
-
-    .btn {
-      display:inline-block; padding:12px 20px; background: var(--brand); color: var(--white);
-      text-decoration:none; border-radius:6px; font-weight:600; margin-top:16px;
-    }
-
   </style>
 </head>
 <body>
@@ -126,16 +162,14 @@
 </header>
 
 <nav>
-  <div class="container">
-    <ul>
-      <li><a href="#home" class="nav-link active">Accueil</a></li>
-      <li><a href="#marches" class="nav-link">Marchés</a></li>
-      <li><a href="#services" class="nav-link">Services</a></li>
-      <li><a href="#clients" class="nav-link">Clients Afrique</a></li>
-      <li><a href="#apropos" class="nav-link">À propos</a></li>
-      <li><a href="#contact" class="nav-link">Contact</a></li>
-    </ul>
-  </div>
+  <ul>
+    <li><a href="#home" class="active">Accueil</a></li>
+    <li><a href="#marches">Marchés</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#clients">Clients Afrique</a></li>
+    <li><a href="#apropos">À propos</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </nav>
 
 <main class="container">
@@ -144,35 +178,8 @@
     <p>Votre passerelle pour les marchés financiers en Afrique francophone — transparence, sécurité, performance.</p>
     <a href="#contact" class="btn">Ouvrir un Compte</a>
   </section>
-
-  <section id="services" class="services">
-    <h2>Nos Services</h2>
-    <div class="service-cards">
-      <div class="service-card">
-        <h3>Intermédiation & Transmission d'Ordres</h3>
-        <p>Passage d’ordres d’actions, obligations, titres publics, etc., via notre plateforme sécurisée.</p>
-      </div>
-      <div class="service-card">
-        <h3>Conseil Financier Personnalisé</h3>
-        <p>Évaluation de votre profil, stratégie sur mesure, accompagnement dans vos investissements.</p>
-      </div>
-      <div class="service-card">
-        <h3>Gestion de Portefeuille</h3>
-        <p>Suivi régulier, diversification, optimisation du risque / rendement.</p>
-      </div>
-      <div class="service-card">
-        <h3>Produits Financiers Diversifiés</        <p>Accès aux actions, obligations, fonds, titres publics, etc.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="page-home" class="page">
-      <div class="hero">
-        <div>
-          <h1>Investissez en toute confiance avec CAPITALINVEST</h1>
-          <p>Suivez les marchés, gérez vos portefeuilles et accédez à des produits financiers pensés pour les investisseurs modernes.</p>
-
-          <div class="card" style="display:flex;gap:12px;align-items:center">
+ 
+ <div class="card" style="display:flex;gap:12px;align-items:center">
             <div style="flex:1">
               <div class="small">Valeur de portefeuille</div>
               <div style="font-size:22px;font-weight:800">249 808 000 FCFA</div>
@@ -181,70 +188,62 @@
             <div style="width:220px">
               <canvas id="sparkline" width="220" height="80"></canvas>
             </div>
-          </div>
+  </div>
 
-          <div class="features">
-            <div class="card feature">
-              <h3>Streaming des marchés</h3>
-              <p class="muted">Cotation en quasi-temps réel et alertes personnalisables.</p>
-            </div>
-            <div class="card feature">
-              <h3>Sécurité</h3>
-              <p class="muted">Authentification forte et cryptage des données.</p>
-            </div>
-            <div class="card feature">
-              <h3>Conseils & rapports</h3>
-              <p class="muted">Analyses et recommandations selon votre profil.</p>
-            </div>
-          </div>
-        </div>
-
-        <aside class="card">
-          <h4 style="margin-top:0">Marchés en direct</h4>
-          <div id="markets-list" class="markets">
-            <!-- rows injected by JS -->
-          </div>
-
-          <div style="margin-top:14px">
-            <a class="btn" onclick="navigateTo('markets')">Voir tous les marchés</a>
-            <button class="btn" style="background:transparent;color:var(--brand);border:1px solid var(--brand);margin-left:8px" onclick="printPortfolio()">Imprimer</button>
-          </div>
-        </aside>
+  <section id="services">
+    <h2>Nos Services</h2>
+    <div class="service-cards">
+      <div class="service-card">
+        <h3>Intermédiation & Transmission d'Ordres</h3>
+        <p>Passage d’ordres d’actions, obligations, titres publics via notre plateforme sécurisée.</p>
       </div>
-    </section>
- 
+      <div class="service-card">
+        <h3>Conseil Financier Personnalisé</h3>
+        <p>Évaluation de votre profil, stratégie sur mesure, accompagnement professionnel.</p>
+      </div>
+      <div class="service-card">
+        <h3>Gestion de Portefeuille</h3>
+        <p>Suivi régulier, diversification, optimisation du risque/rendement.</p>
+      </div>
+      <div class="service-card">
+        <h3>Produits Financiers Diversifiés</h3>
+        <p>Accès aux actions, obligations, fonds, titres publics, etc.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="marches" class="markets">
+    <h2>Marchés en Direct</h2>
+    <table id="live-market-table">
+      <thead>
+        <tr>
+          <th>Symbole</th>
+          <th>Entreprise</th>
+          <th>Prix</th>
+          <th>Variation</th>
+          <th>Volume</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
 
   <section id="clients" class="clients">
     <h2>Clients en Afrique francophone</h2>
     <div class="client-cards">
-      <div class="client-card">
-        <img src="https://flagcdn.com/w80/cm.png" alt="Cameroun">
-        <div class="name">Cameroun</div>
-      </div>
-      <div class="client-card">
-        <img src="https://flagcdn.com/w80/ci.png" alt="Côte d'Ivoire">
-        <div class="name">Côte d’Ivoire</div>
-      </div>
-      <div class="client-card">
-        <img src="https://flagcdn.com/w80/sn.png" alt="Sénégal">
-        <div class="name">Sénégal</div>
-      </div>
-      <div class="client-card">
-        <img src="https://flagcdn.com/w80/gq.png" alt="Guinée Équatoriale">
-        <div class="name">Guinée Équatoriale</div>
-      </div>
-      <div class="client-card">
-        <img src="https://flagcdn.com/w80/ga.png" alt="Gabon">
-        <div class="name">Gabon</div>
-      </div>
+      <div class="client-card"><img src="https://flagcdn.com/w80/cm.png" alt="Cameroun" /><div class="name">Cameroun</div></div>
+      <div class="client-card"><img src="https://flagcdn.com/w80/ci.png" alt="Côte d’Ivoire" /><div class="name">Côte d’Ivoire</div></div>
+      <div class="client-card"><img src="https://flagcdn.com/w80/sn.png" alt="Sénégal" /><div class="name">Sénégal</div></div>
+      <div class="client-card"><img src="https://flagcdn.com/w80/gq.png" alt="Guinée Équatoriale" /><div class="name">Guinée Équatoriale</div></div>
+      <div class="client-card"><img src="https://flagcdn.com/w80/ga.png" alt="Gabon" /><div class="name">Gabon</div></div>
     </div>
   </section>
 
   <section id="apropos" class="about">
     <h2>À propos de CAPITALINVEST</h2>
-    <p>CAPITALINVEST est une société de bourse agréée intervenant dans l’intermédiation financière et la gestion d’actifs. Nous nous engageons à fournir transparence, sécurité et performance à nos clients en Afrique francophone.</p>
+    <p><strong>CAPITALINVEST</strong> est une société de bourse agréée en intermédiation financière et gestion d’actifs.</p>
     <p><strong>Vision :</strong> Devenir la plateforme de référence pour les investisseurs francophones en Afrique.</p>
-    <p><strong>Mission :</strong> Rendre les marchés financiers accessibles, informer, conseiller, et fournir des outils fiables pour tous.</p>
+    <p><strong>Mission :</strong> Rendre les marchés financiers accessibles, informer, conseiller et équiper nos clients d’outils fiables.</p>
   </section>
 
   <section id="testimonials" class="testimonials">
@@ -281,28 +280,25 @@
   </div>
 </section>
 
-
-  <section id="contact" class="about">
+  <section id="contact" class="contact">
     <h2>Contact & Ouverture de Compte</h2>
-    <div class="service-card"> 
-      <form onsubmit="event.preventDefault();alert('Votre demande a été reçue !')">
-        <label>Nom complet</label><br>
-        <input type="text" required style="width:100%;padding:10px;margin:8px 0;"><br>
-        <label>Email</label><br>
-        <input type="email" required style="width:100%;padding:10px;margin:8px 0;"><br>
-        <label>Pays</label><br>
-        <select required style="width:100%;padding:10px;margin:8px 0;">
-          <option value="">Sélectionner votre pays</option>
-          <option>Cameroun</option>
-          <option>Côte d’Ivoire</option>
-          <option>Sénégal</option>
-          <option>Gabon</option>
-          <option>Guinée Équatoriale</option>
-          <option>Autre</option>
-        </select><br>
-        <button class="btn">Envoyer</button>
-      </form>
-    </div>
+    <form onsubmit="event.preventDefault();alert('Votre demande a été reçue !')">
+      <label for="nom">Nom complet</label>
+      <input type="text" id="nom" required />
+      <label for="email">Email</label>
+      <input type="email" id="email" required />
+      <label for="pays">Pays</label>
+      <select id="pays" required>
+        <option value="">Sélectionner votre pays</option>
+        <option>Cameroun</option>
+        <option>Côte d’Ivoire</option>
+        <option>Sénégal</option>
+        <option>Gabon</option>
+        <option>Guinée Équatoriale</option>
+        <option>Autre</option>
+      </select>
+      <button class="btn" type="submit">Envoyer</button>
+    </form>
   </section>
 </main>
 
@@ -311,7 +307,6 @@
 </footer>
 
 <script>
-  // Exemple de données pour le marché en direct
   const liveMarkets = [
     {symbol:'AFR', name:'Afriland', price:1250, change: +1.2, volume: 15000},
     {symbol:'COF', name:'Cofina', price:860, change: -0.8, volume: 8000},
@@ -329,7 +324,9 @@
         <td>${m.symbol}</td>
         <td>${m.name}</td>
         <td>${m.price.toLocaleString()}</td>
-        <td class="${m.change >=0 ? 'price-up' : 'price-down'}">${m.change >=0 ? '+' : ''}${m.change.toFixed(2)}%</td>
+        <td class="${m.change >=0 ? 'price-up' : 'price-down'}">
+          ${m.change >=0 ? '+' : ''}${m.change.toFixed(2)}%
+        </td>
         <td>${m.volume.toLocaleString()}</td>
       `;
       tbody.appendChild(tr);
@@ -338,13 +335,11 @@
 
   renderLiveMarket();
   setInterval(() => {
-    // simuler variation
     liveMarkets.forEach(m => {
-      const delta = (Math.random() * 2 - 1) * 0.02 * m.price; // ±2%
+      const delta = (Math.random() * 2 - 1) * 0.02 * m.price;
       m.price = +(m.price + delta).toFixed(0);
-      m.change = ((delta / m.price) * 100).toFixed(2);
-      m.volume = m.volume + Math.floor(Math.random() * 5000 - 2500);
-      if (m.volume < 0) m.volume = 0;
+      m.change = ((delta / m.price) * 100);
+      m.volume = Math.max(0, m.volume + Math.floor(Math.random() * 5000 - 2500));
     });
     renderLiveMarket();
   }, 5000);
