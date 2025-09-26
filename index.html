@@ -9,35 +9,114 @@
     :root {
       --brand: #0b6f2b;
       --brand-dark: #094f1b;
+      --accent: #f59e0b;
       --bg: #f8faf9;
       --text-dark: #0b1b2b;
       --text-muted: #6b7280;
       --white: #ffffff;
       --border-light: #e5e7eb;
     }
+    * {box-sizing: border-box;}
     body { margin:0; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text-dark); }
-    header { background: var(--brand); color: var(--white); padding: 20px 0; text-align: center; }
+    header {
+      background: var(--brand);
+      color: var(--white);
+      padding: 20px 0;
+      text-align: center;
+    }
     header .logo { font-size: 28px; font-weight: 800; }
-    nav { background: var(--white); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-    nav ul { list-style:none; margin:0; padding:0; display:flex; justify-content:center; gap: 30px; }
-    nav a { text-decoration:none; color: var(--text-dark); font-weight:600; padding:14px 8px; }
-    nav a:hover, nav a.active { color: var(--brand); border-bottom: 3px solid var(--brand); }
+    nav {
+      background: var(--white);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav ul {
+      list-style:none;
+      margin:0; padding:0;
+      display:flex; justify-content:center;
+      gap: 30px;
+    }
+    nav a {
+      text-decoration:none; color: var(--text-dark);
+      font-weight:600; padding:14px 8px;
+    }
+    nav a:hover, nav a.active {
+      color: var(--brand);
+      border-bottom: 3px solid var(--brand);
+    }
     .container { max-width: 1200px; margin:0 auto; padding:20px; }
-    .hero { background: linear-gradient(135deg, var(--brand-dark), var(--brand)); color: var(--white); padding: 60px 20px; text-align: center; border-radius: 10px; }
+    .hero {
+      background: linear-gradient(135deg, var(--brand-dark), var(--brand));
+      color: var(--white);
+      padding: 60px 20px;
+      text-align: center;
+      border-radius: 10px;
+    }
     .hero h1 { margin:0; font-size:36px; }
     .hero p { font-size:18px; margin-top:12px; }
-    h2 { margin-top:40px; color: var(--brand); text-align:center; }
-    .markets table { width:100%; border-collapse: collapse; background: var(--white); margin-top:20px; }
-    .markets th, .markets td { padding:12px 15px; text-align:left; border-bottom:1px solid var(--border-light); }
-    .markets th { background: var(--brand); color: var(--white); }
+
+    .services, .markets, .clients, .testimonials, .about {
+      margin-top:40px;
+    }
+
+    .services .service-cards {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px;
+    }
+    .service-card {
+      background: var(--white); border-radius:8px; padding:24px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    }
+    .service-card h3 { color: var(--brand); margin-bottom:12px; }
+    .service-card p { color: var(--text-muted); }
+
+    .markets table {
+      width:100%; border-collapse: collapse; background: var(--white);
+      box-shadow:0 4px 14px rgba(0,0,0,0.05);
+    }
+    .markets th, .markets td {
+      padding:12px 15px; text-align:left; border-bottom:1px solid var(--border-light);
+    }
+    .markets th {
+      background: var(--brand); color: var(--white);
+    }
+    .markets tr:hover {
+      background: #f1f5f9;
+    }
     .price-up { color: green; font-weight:700; }
     .price-down { color: red; font-weight:700; }
-    .portfolio { background: var(--white); padding:20px; text-align:center; border-radius:8px; box-shadow:0 4px 14px rgba(0,0,0,0.05); margin-top:20px; }
-    .portfolio h3 { margin:0; font-size:22px; color: var(--text-dark); }
-    .portfolio .value { font-size:28px; font-weight:800; color: var(--brand-dark); margin-top:10px; }
-    .contact-box { background: var(--white); padding:30px; border-radius:8px; box-shadow:0 4px 14px rgba(0,0,0,0.05); margin-top:20px; }
-    .btn { display:inline-block; padding:12px 20px; background: var(--brand); color: var(--white); text-decoration:none; border-radius:6px; font-weight:600; margin-top:16px; }
-    footer { margin-top:60px; text-align:center; padding:20px; color: var(--text-muted); font-size:14px; background:#fff; border-top:1px solid var(--border-light); }
+
+    .clients .client-cards {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px;
+    }
+    .client-card {
+      background: var(--white); padding:18px; border-radius:8px; text-align:center;
+      box-shadow:0 2px 8px rgba(0,0,0,0.05);
+    }
+    .client-card img { width:80px; height:50px; object-fit:cover; border-radius:4px; }
+    .client-card .name { margin-top:10px; font-weight:600; }
+
+    .testimonials .testimonial-list {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px;
+    }
+    .testimonial-card {
+      background: var(--white); border-left:4px solid var(--brand); padding:20px; border-radius:6px;
+    }
+    .testimonial-card p { font-style:italic; margin:0 0 10px; color: var(--text-dark); }
+    .testimonial-card .author { font-weight:700; color: var(--brand-dark); }
+
+    .about {
+      background: var(--white); padding:30px; border-radius:8px;
+      box-shadow:0 4px 14px rgba(0,0,0,0.05);
+    }
+    .about h2 { margin-top:0; color: var(--brand); }
+    .footer {
+      margin-top:60px; text-align:center; padding:20px; color: var(--text-muted); font-size:14px;
+    }
+
+    .btn {
+      display:inline-block; padding:12px 20px; background: var(--brand); color: var(--white);
+      text-decoration:none; border-radius:6px; font-weight:600; margin-top:16px;
+    }
+
   </style>
 </head>
 <body>
@@ -49,75 +128,196 @@
 <nav>
   <div class="container">
     <ul>
-      <li><a href="#home" class="active">Accueil</a></li>
-      <li><a href="#marches">Marchés</a></li>
-      <li><a href="#portfolio">Portefeuille</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#home" class="nav-link active">Accueil</a></li>
+      <li><a href="#marches" class="nav-link">Marchés</a></li>
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#clients" class="nav-link">Clients Afrique</a></li>
+      <li><a href="#apropos" class="nav-link">À propos</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
     </ul>
   </div>
 </nav>
 
 <main class="container">
-  <!-- Hero -->
   <section id="home" class="hero">
     <h1>Bienvenue chez CAPITALINVEST</h1>
-    <p>Votre passerelle vers les marchés financiers en Afrique francophone.</p>
-    <a href="#contact" class="btn">Nous Contacter</a>
+    <p>Votre passerelle pour les marchés financiers en Afrique francophone — transparence, sécurité, performance.</p>
+    <a href="#contact" class="btn">Ouvrir un Compte</a>
   </section>
 
-  <!-- Marché en direct -->
-  <section id="marches" class="markets">
-    <h2>Marché en Direct</h2>
-    <table id="live-market-table">
-      <thead>
-        <tr>
-          <th>Symbole</th>
-          <th>Nom</th>
-          <th>Cours (FCFA)</th>
-          <th>Variation (%)</th>
-          <th>Volume</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+  <section id="services" class="services">
+    <h2>Nos Services</h2>
+    <div class="service-cards">
+      <div class="service-card">
+        <h3>Intermédiation & Transmission d'Ordres</h3>
+        <p>Passage d’ordres d’actions, obligations, titres publics, etc., via notre plateforme sécurisée.</p>
+      </div>
+      <div class="service-card">
+        <h3>Conseil Financier Personnalisé</h3>
+        <p>Évaluation de votre profil, stratégie sur mesure, accompagnement dans vos investissements.</p>
+      </div>
+      <div class="service-card">
+        <h3>Gestion de Portefeuille</h3>
+        <p>Suivi régulier, diversification, optimisation du risque / rendement.</p>
+      </div>
+      <div class="service-card">
+        <h3>Produits Financiers Diversifiés</        <p>Accès aux actions, obligations, fonds, titres publics, etc.</p>
+      </div>
+    </div>
   </section>
 
-  <!-- Valeur du portefeuille -->
-  <section id="portfolio" class="portfolio">
-    <h3>Valeur actuelle du portefeuille</h3>
-    <div class="value">259 256 859 FCFA</div>
+  <section id="page-home" class="page">
+      <div class="hero">
+        <div>
+          <h1>Investissez en toute confiance avec CAPITALINVEST</h1>
+          <p>Suivez les marchés, gérez vos portefeuilles et accédez à des produits financiers pensés pour les investisseurs modernes.</p>
+
+          <div class="card" style="display:flex;gap:12px;align-items:center">
+            <div style="flex:1">
+              <div class="small">Valeur de portefeuille</div>
+              <div style="font-size:22px;font-weight:800">249 808 000 FCFA</div>
+              <div class="muted">Performance 1M: <span class="price-up">+3.8%</span></div>
+            </div>
+            <div style="width:220px">
+              <canvas id="sparkline" width="220" height="80"></canvas>
+            </div>
+          </div>
+
+          <div class="features">
+            <div class="card feature">
+              <h3>Streaming des marchés</h3>
+              <p class="muted">Cotation en quasi-temps réel et alertes personnalisables.</p>
+            </div>
+            <div class="card feature">
+              <h3>Sécurité</h3>
+              <p class="muted">Authentification forte et cryptage des données.</p>
+            </div>
+            <div class="card feature">
+              <h3>Conseils & rapports</h3>
+              <p class="muted">Analyses et recommandations selon votre profil.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card">
+          <h4 style="margin-top:0">Marchés en direct</h4>
+          <div id="markets-list" class="markets">
+            <!-- rows injected by JS -->
+          </div>
+
+          <div style="margin-top:14px">
+            <a class="btn" onclick="navigateTo('markets')">Voir tous les marchés</a>
+            <button class="btn" style="background:transparent;color:var(--brand);border:1px solid var(--brand);margin-left:8px" onclick="printPortfolio()">Imprimer</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+ 
+
+  <section id="clients" class="clients">
+    <h2>Clients en Afrique francophone</h2>
+    <div class="client-cards">
+      <div class="client-card">
+        <img src="https://flagcdn.com/w80/cm.png" alt="Cameroun">
+        <div class="name">Cameroun</div>
+      </div>
+      <div class="client-card">
+        <img src="https://flagcdn.com/w80/ci.png" alt="Côte d'Ivoire">
+        <div class="name">Côte d’Ivoire</div>
+      </div>
+      <div class="client-card">
+        <img src="https://flagcdn.com/w80/sn.png" alt="Sénégal">
+        <div class="name">Sénégal</div>
+      </div>
+      <div class="client-card">
+        <img src="https://flagcdn.com/w80/gq.png" alt="Guinée Équatoriale">
+        <div class="name">Guinée Équatoriale</div>
+      </div>
+      <div class="client-card">
+        <img src="https://flagcdn.com/w80/ga.png" alt="Gabon">
+        <div class="name">Gabon</div>
+      </div>
+    </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact">
-    <h2>Contactez-nous</h2>
-    <div class="contact-box">
-      <p>Pour toute demande, veuillez nous écrire à :</p>
-      <p><strong>capitalinvestcoorp.6@gmail.com</strong></p>
-      <form onsubmit="event.preventDefault();alert('Votre message a été envoyé !')">
+  <section id="apropos" class="about">
+    <h2>À propos de CAPITALINVEST</h2>
+    <p>CAPITALINVEST est une société de bourse agréée intervenant dans l’intermédiation financière et la gestion d’actifs. Nous nous engageons à fournir transparence, sécurité et performance à nos clients en Afrique francophone.</p>
+    <p><strong>Vision :</strong> Devenir la plateforme de référence pour les investisseurs francophones en Afrique.</p>
+    <p><strong>Mission :</strong> Rendre les marchés financiers accessibles, informer, conseiller, et fournir des outils fiables pour tous.</p>
+  </section>
+
+  <section id="testimonials" class="testimonials">
+  <h2>Témoignages</h2>
+  <div class="testimonial-list">
+    <div class="testimonial-card">
+      <p>"Grâce à CAPITALINVEST, j’ai pu investir en toute confiance sur le marché régional."</p>
+      <div class="author">— A. Kouame, Investisseur, Côte d’Ivoire</div>
+    </div>
+    <div class="testimonial-card">
+      <p>"Service rapide, informations claires, équipe à l’écoute."</p>
+      <div class="author">— M. Bayo, Trader, Sénégal</div>
+    </div>
+    <div class="testimonial-card">
+      <p>"Plateforme sécurisée et interface professionnelle."</p>
+      <div class="author">— F. Obiang, Entrepreneur, Gabon</div>
+    </div>
+    <div class="testimonial-card">
+      <p>"CAPITALINVEST m’a permis d’accéder facilement à des opportunités d’investissement que je n’aurais jamais imaginées."</p>
+      <div class="author">— S. Traoré, Analyste financier, Burkina Faso</div>
+    </div>
+    <div class="testimonial-card">
+      <p>"L’accompagnement est personnalisé et les conseils sont vraiment adaptés à mon profil d’investisseur."</p>
+      <div class="author">— H. Diallo, Ingénieur, Mali</div>
+    </div>
+    <div class="testimonial-card">
+      <p>"Je suis impressionné par la transparence et la réactivité du service client."</p>
+      <div class="author">— Y. Koffi, Entrepreneur, Côte d’Ivoire</div>
+    </div>
+    <div class="testimonial-card">
+      <p>"En tant que jeune investisseur, j’ai trouvé une plateforme claire et rassurante pour démarrer."</p>
+      <div class="author">— M. Sow, Étudiant en finance, Sénégal</div>
+    </div>
+  </div>
+</section>
+
+
+  <section id="contact" class="about">
+    <h2>Contact & Ouverture de Compte</h2>
+    <div class="service-card"> 
+      <form onsubmit="event.preventDefault();alert('Votre demande a été reçue !')">
         <label>Nom complet</label><br>
         <input type="text" required style="width:100%;padding:10px;margin:8px 0;"><br>
         <label>Email</label><br>
         <input type="email" required style="width:100%;padding:10px;margin:8px 0;"><br>
-        <label>Message</label><br>
-        <textarea required style="width:100%;padding:10px;margin:8px 0;"></textarea><br>
+        <label>Pays</label><br>
+        <select required style="width:100%;padding:10px;margin:8px 0;">
+          <option value="">Sélectionner votre pays</option>
+          <option>Cameroun</option>
+          <option>Côte d’Ivoire</option>
+          <option>Sénégal</option>
+          <option>Gabon</option>
+          <option>Guinée Équatoriale</option>
+          <option>Autre</option>
+        </select><br>
         <button class="btn">Envoyer</button>
       </form>
     </div>
   </section>
 </main>
 
-<footer>
-  © 2025 CAPITALINVEST — Tous droits réservés | Contact : capitalinvestcoorp.6@gmail.com
+<footer class="footer">
+  © 2025 CAPITALINVEST — Tous droits réservés
 </footer>
 
 <script>
-  // Données simulées pour le marché
+  // Exemple de données pour le marché en direct
   const liveMarkets = [
     {symbol:'AFR', name:'Afriland', price:1250, change: +1.2, volume: 15000},
     {symbol:'COF', name:'Cofina', price:860, change: -0.8, volume: 8000},
     {symbol:'MTN', name:'MTN Mobile', price:14200, change: +0.5, volume: 12000},
-    {symbol:'SGB', name:'SGBC', price:420, change: +2.1, volume: 22000}
+    {symbol:'SGB', name:'SGBC', price:420, change: +2.1, volume: 22000},
+    {symbol:'BNP', name:'BNP Paribas', price:10250, change: -1.5, volume: 5000}
   ];
 
   function renderLiveMarket() {
