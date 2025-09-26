@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CAPITALINVEST — Bourse & Investissement</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #0b6f2b;
+      --brand-dark: #094f1b;
+      --bg: #f8faf9;
+      --text-dark: #0b1b2b;
+      --text-muted: #6b7280;
+      --white: #ffffff;
+      --border-light: #e5e7eb;
+    }
+    body { margin:0; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text-dark); }
+    header { background: var(--brand); color: var(--white); padding: 20px 0; text-align: center; }
+    header .logo { font-size: 28px; font-weight: 800; }
+    nav { background: var(--white); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    nav ul { list-style:none; margin:0; padding:0; display:flex; justify-content:center; gap: 30px; }
+    nav a { text-decoration:none; color: var(--text-dark); font-weight:600; padding:14px 8px; }
+    nav a:hover, nav a.active { color: var(--brand); border-bottom: 3px solid var(--brand); }
+    .container { max-width: 1200px; margin:0 auto; padding:20px; }
+    .hero { background: linear-gradient(135deg, var(--brand-dark), var(--brand)); color: var(--white); padding: 60px 20px; text-align: center; border-radius: 10px; }
+    .hero h1 { margin:0; font-size:36px; }
+    .hero p { font-size:18px; margin-top:12px; }
+    h2 { margin-top:40px; color: var(--brand); text-align:center; }
+    .markets table { width:100%; border-collapse: collapse; background: var(--white); margin-top:20px; }
+    .markets th, .markets td { padding:12px 15px; text-align:left; border-bottom:1px solid var(--border-light); }
+    .markets th { background: var(--brand); color: var(--white); }
+    .price-up { color: green; font-weight:700; }
+    .price-down { color: red; font-weight:700; }
+    .portfolio { background: var(--white); padding:20px; text-align:center; border-radius:8px; box-shadow:0 4px 14px rgba(0,0,0,0.05); margin-top:20px; }
+    .portfolio h3 { margin:0; font-size:22px; color: var(--text-dark); }
+    .portfolio .value { font-size:28px; font-weight:800; color: var(--brand-dark); margin-top:10px; }
+    .contact-box { background: var(--white); padding:30px; border-radius:8px; box-shadow:0 4px 14px rgba(0,0,0,0.05); margin-top:20px; }
+    .btn { display:inline-block; padding:12px 20px; background: var(--brand); color: var(--white); text-decoration:none; border-radius:6px; font-weight:600; margin-top:16px; }
+    footer { margin-top:60px; text-align:center; padding:20px; color: var(--text-muted); font-size:14px; background:#fff; border-top:1px solid var(--border-light); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">CAPITALINVEST</div>
+</header>
+
+<nav>
+  <div class="container">
+    <ul>
+      <li><a href="#home" class="active">Accueil</a></li>
+      <li><a href="#marches">Marchés</a></li>
+      <li><a href="#portfolio">Portefeuille</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="container">
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <h1>Bienvenue chez CAPITALINVEST</h1>
+    <p>Votre passerelle vers les marchés financiers en Afrique francophone.</p>
+    <a href="#contact" class="btn">Nous Contacter</a>
+  </section>
+
+  <!-- Marché en direct -->
+  <section id="marches" class="markets">
+    <h2>Marché en Direct</h2>
+    <table id="live-market-table">
+      <thead>
+        <tr>
+          <th>Symbole</th>
+          <th>Nom</th>
+          <th>Cours (FCFA)</th>
+          <th>Variation (%)</th>
+          <th>Volume</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <!-- Valeur du portefeuille -->
+  <section id="portfolio" class="portfolio">
+    <h3>Valeur actuelle du portefeuille</h3>
+    <div class="value">259 256 859 FCFA</div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contactez-nous</h2>
+    <div class="contact-box">
+      <p>Pour toute demande, veuillez nous écrire à :</p>
+      <p><strong>capitalinvestcoorp.6@gmail.com</strong></p>
+      <form onsubmit="event.preventDefault();alert('Votre message a été envoyé !')">
+        <label>Nom complet</label><br>
+        <input type="text" required style="width:100%;padding:10px;margin:8px 0;"><br>
+        <label>Email</label><br>
+        <input type="email" required style="width:100%;padding:10px;margin:8px 0;"><br>
+        <label>Message</label><br>
+        <textarea required style="width:100%;padding:10px;margin:8px 0;"></textarea><br>
+        <button class="btn">Envoyer</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2025 CAPITALINVEST — Tous droits réservés | Contact : capitalinvestcoorp.6@gmail.com
+</footer>
+
+<script>
+  // Données simulées pour le marché
+  const liveMarkets = [
+    {symbol:'AFR', name:'Afriland', price:1250, change: +1.2, volume: 15000},
+    {symbol:'COF', name:'Cofina', price:860, change: -0.8, volume: 8000},
+    {symbol:'MTN', name:'MTN Mobile', price:14200, change: +0.5, volume: 12000},
+    {symbol:'SGB', name:'SGBC', price:420, change: +2.1, volume: 22000}
+  ];
+
+  function renderLiveMarket() {
+    const tbody = document.querySelector('#live-market-table tbody');
+    tbody.innerHTML = '';
+    liveMarkets.forEach(m => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${m.symbol}</td>
+        <td>${m.name}</td>
+        <td>${m.price.toLocaleString()}</td>
+        <td class="${m.change >=0 ? 'price-up' : 'price-down'}">${m.change >=0 ? '+' : ''}${m.change.toFixed(2)}%</td>
+        <td>${m.volume.toLocaleString()}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  renderLiveMarket();
+  setInterval(() => {
+    // simuler variation
+    liveMarkets.forEach(m => {
+      const delta = (Math.random() * 2 - 1) * 0.02 * m.price; // ±2%
+      m.price = +(m.price + delta).toFixed(0);
+      m.change = ((delta / m.price) * 100).toFixed(2);
+      m.volume = m.volume + Math.floor(Math.random() * 5000 - 2500);
+      if (m.volume < 0) m.volume = 0;
+    });
+    renderLiveMarket();
+  }, 5000);
+</script>
+
+</body>
+</html>
