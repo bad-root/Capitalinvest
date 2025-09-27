@@ -30,10 +30,7 @@
       padding: 20px 0;
       text-align: center;
     }
-    .logo {
-      font-size: 28px;
-      font-weight: 800;
-    }
+    .logo { font-size: 28px; font-weight: 800; }
     nav {
       background: var(--white);
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -86,7 +83,7 @@
     }
     section { margin-top: 40px; }
     h2 { margin-bottom: 20px; color: var(--brand-dark); }
-    .service-cards, .client-cards, .testimonial-list {
+    .service-cards, .client-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 24px;
@@ -97,23 +94,15 @@
       border-radius: 8px;
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
     }
-    .service-card h3, .testimonial-card .author {
-      color: var(--brand);
-    }
-    .testimonial-card p {
-      font-style: italic;
-      margin-bottom: 10px;
-    }
+    .service-card h3, .testimonial-card .author { color: var(--brand); }
+    .testimonial-card p { font-style: italic; margin-bottom: 10px; }
     .client-card img {
       width: 80px;
       height: 50px;
       object-fit: cover;
       border-radius: 4px;
     }
-    .client-card .name {
-      margin-top: 10px;
-      font-weight: 600;
-    }
+    .client-card .name { margin-top: 10px; font-weight: 600; }
     .markets table {
       width: 100%;
       border-collapse: collapse;
@@ -126,10 +115,7 @@
       text-align: left;
       border-bottom: 1px solid var(--border-light);
     }
-    .markets th {
-      background: var(--brand);
-      color: var(--white);
-    }
+    .markets th { background: var(--brand); color: var(--white); }
     .price-up { color: green; font-weight: 700; }
     .price-down { color: red; font-weight: 700; }
     .about, .contact {
@@ -153,10 +139,37 @@
       color: var(--text-muted);
       font-size: 14px;
     }
+
+    /* ---- Slider Témoignages ---- */
+    #testimonial-slider-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+    #testimonial-slider {
+      display: flex;
+      transition: transform 0.6s ease-in-out;
+    }
+    #testimonial-slider .testimonial-card {
+      min-width: 100%;
+      box-sizing: border-box;
+    }
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.4);
+      color: #fff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+    .slider-btn:hover { background: rgba(0,0,0,0.6); }
+    .slider-btn.prev { left: 10px; }
+    .slider-btn.next { right: 10px; }
   </style>
 </head>
 <body>
-
 <header>
   <div class="logo">CAPITALINVEST</div>
 </header>
@@ -178,7 +191,7 @@
     <p>Votre passerelle pour les marchés financiers en Afrique francophone — transparence, sécurité, performance.</p>
     <a href="#contact" class="btn">Ouvrir un Compte</a>
   </section>
- 
+
  <div class="card" style="display:flex;gap:12px;align-items:center">
             <div style="flex:1">
               <div class="small">Valeur de portefeuille</div>
@@ -190,7 +203,7 @@
             </div>
   </div>
 
-  <section id="services">
+ <section id="services">
     <h2>Nos Services</h2>
     <div class="service-cards">
       <div class="service-card">
@@ -216,19 +229,19 @@
     <h2>Marchés en Direct</h2>
     <table id="live-market-table">
       <thead>
-        <tr>
-          <th>Symbole</th>
-          <th>Entreprise</th>
-          <th>Prix</th>
-          <th>Variation</th>
-          <th>Volume</th>
-        </tr>
+      <tr>
+        <th>Symbole</th>
+        <th>Entreprise</th>
+        <th>Prix</th>
+        <th>Variation</th>
+        <th>Volume</th>
+      </tr>
       </thead>
       <tbody></tbody>
     </table>
   </section>
 
-  <section id="clients" class="clients">
+ <section id="clients" class="clients">
     <h2>Clients en Afrique francophone</h2>
     <div class="client-cards">
       <div class="client-card"><img src="https://flagcdn.com/w160/dz.png" alt="Algérie" /><div class="name">Algérie</div></div>
@@ -246,28 +259,20 @@
         <div class="client-card"><img src="https://flagcdn.com/w160/gq.png" alt="Guinée équatoriale" /><div class="name">Guinée équatoriale</div></div>
         <div class="client-card"><img src="https://flagcdn.com/w160/gf.png" alt="Guinée‑Française (Guyane)" /><div class="name">Guyane</div></div>
         <div class="client-card"><img src="https://flagcdn.com/w160/gn.png" alt="Guinée" /><div class="name">Guinée</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/gp.png" alt="Guadeloupe" /><div class="name">Guadeloupe</div></div>
         <div class="client-card"><img src="https://flagcdn.com/w160/gw.png" alt="Guinée‑Bissau" /><div class="name">Guinée‑Bissau</div></div>
         <div class="client-card"><img src="https://flagcdn.com/w160/ci.png" alt="Côte d’Ivoire" /><div class="name">Côte d’Ivoire</div></div>
         <div class="client-card"><img src="https://flagcdn.com/w160/lu.png" alt="Luxembourg" /><div class="name">Luxembourg</div></div>
         <div class="client-card"><img src="https://flagcdn.com/w160/mg.png" alt="Madagascar" /><div class="name">Madagascar</div></div>
         <div class="client-card"><img src="https://flagcdn.com/w160/ml.png" alt="Mali" /><div class="name">Mali</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/mq.png" alt="Martinique" /><div class="name">Martinique</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/mr.png" alt="Mauritanie" /><div class="name">Mauritanie</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/mu.png" alt="Maurice" /><div class="name">Maurice</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/yt.png" alt="Mayotte" /><div class="name">Mayotte</div></div>
         <div class="client-card"><img src="https://flagcdn.com/w160/re.png" alt="Réunion" /><div class="name">Réunion</div></div>
         <div class="client-card"><img src="https://flagcdn.com/w160/ne.png" alt="Niger" /><div class="name">Niger</div></div>
         <div class="client-card"><img src="https://flagcdn.com/w160/sn.png" alt="Sénégal" /><div class="name">Sénégal</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/bl.png" alt="Saint‑Barthélemy" /><div class="name">Saint‑Barthélemy</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/mf.png" alt="Saint‑Martin" /><div class="name">Saint‑Martin</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/pm.png" alt="Saint‑Pierre‑et‑Miquelon" /><div class="name">Saint‑Pierre‑et‑Miquelon</div></div>
         <div class="client-card"><img src="https://flagcdn.com/w160/td.png" alt="Tchad" /><div class="name">Tchad</div></div>
         <div class="client-card"><img src="https://flagcdn.com/w160/tg.png" alt="Togo" /><div class="name">Togo</div></div>
     </div>
   </section>
 
-  <section id="apropos" class="about">
+<section id="apropos" class="about">
     <h2>À propos de CAPITALINVEST</h2>
     <p><strong>CAPITALINVEST</strong> est une société de bourse agréée en intermédiation financière et gestion d’actifs.</p>
     <p><strong>Vision :</strong> Devenir la plateforme de référence pour les investisseurs francophones en Afrique.</p>
@@ -275,38 +280,21 @@
   </section>
 
   <section id="testimonials" class="testimonials">
-  <h2>Témoignages</h2>
-  <div class="testimonial-list">
-    <div class="testimonial-card">
-      <p>"Grâce à CAPITALINVEST, j’ai pu investir en toute confiance sur le marché régional."</p>
-      <div class="author">— A. Kouame, Investisseur, Côte d’Ivoire</div>
+    <h2>Témoignages</h2>
+    <div id="testimonial-slider-wrapper">
+      <div class="testimonial-list" id="testimonial-slider">
+        <div class="testimonial-card"><p>"Grâce à CAPITALINVEST, j’ai pu investir en toute confiance sur le marché régional."</p><div class="author">— A. Kouame, Investisseur, Côte d’Ivoire</div></div>
+        <div class="testimonial-card"><p>"Service rapide, informations claires, équipe à l’écoute."</p><div class="author">— M. Bayo, Trader, Sénégal</div></div>
+        <div class="testimonial-card"><p>"Plateforme sécurisée et interface professionnelle."</p><div class="author">— F. Obiang, Entrepreneur, Gabon</div></div>
+        <div class="testimonial-card"><p>"CAPITALINVEST m’a permis d’accéder facilement à des opportunités d’investissement que je n’aurais jamais imaginées."</p><div class="author">— S. Traoré, Analyste financier, Burkina Faso</div></div>
+        <div class="testimonial-card"><p>"L’accompagnement est personnalisé et les conseils sont vraiment adaptés à mon profil d’investisseur."</p><div class="author">— H. Diallo, Ingénieur, Mali</div></div>
+        <div class="testimonial-card"><p>"Je suis impressionné par la transparence et la réactivité du service client."</p><div class="author">— Y. Koffi, Entrepreneur, Côte d’Ivoire</div></div>
+        <div class="testimonial-card"><p>"En tant que jeune investisseur, j’ai trouvé une plateforme claire et rassurante pour démarrer."</p><div class="author">— M. Sow, Étudiant en finance, Sénégal</div></div>
+      </div>
+      <button class="slider-btn prev" onclick="prevTestimonial()">&#10094;</button>
+      <button class="slider-btn next" onclick="nextTestimonial()">&#10095;</button>
     </div>
-    <div class="testimonial-card">
-      <p>"Service rapide, informations claires, équipe à l’écoute."</p>
-      <div class="author">— M. Bayo, Trader, Sénégal</div>
-    </div>
-    <div class="testimonial-card">
-      <p>"Plateforme sécurisée et interface professionnelle."</p>
-      <div class="author">— F. Obiang, Entrepreneur, Gabon</div>
-    </div>
-    <div class="testimonial-card">
-      <p>"CAPITALINVEST m’a permis d’accéder facilement à des opportunités d’investissement que je n’aurais jamais imaginées."</p>
-      <div class="author">— S. Traoré, Analyste financier, Burkina Faso</div>
-    </div>
-    <div class="testimonial-card">
-      <p>"L’accompagnement est personnalisé et les conseils sont vraiment adaptés à mon profil d’investisseur."</p>
-      <div class="author">— H. Diallo, Ingénieur, Mali</div>
-    </div>
-    <div class="testimonial-card">
-      <p>"Je suis impressionné par la transparence et la réactivité du service client."</p>
-      <div class="author">— Y. Koffi, Entrepreneur, Côte d’Ivoire</div>
-    </div>
-    <div class="testimonial-card">
-      <p>"En tant que jeune investisseur, j’ai trouvé une plateforme claire et rassurante pour démarrer."</p>
-      <div class="author">— M. Sow, Étudiant en finance, Sénégal</div>
-    </div>
-  </div>
-</section>
+  </section>
 
   <section id="contact" class="contact">
     <h2>Contact & Ouverture de Compte</h2>
@@ -317,7 +305,7 @@
       <input type="email" id="email" required />
       <label for="pays">Pays</label>
       <select id="pays" required>
-        <option value="">Sélectionner votre pays</option>
+       <option value="">Sélectionner votre pays</option>
          <option>Algérie</option>
           <option>Bénin</option>
           <option>Burkina Faso</option>
@@ -359,11 +347,12 @@
     {symbol:'SGB', name:'SGBC', price:420, change: +2.1, volume: 22000},
     {symbol:'BNP', name:'BNP Paribas', price:10250, change: -1.5, volume: 5000}
   ];
+  liveMarkets.forEach(m => m.history = [m.price]);
 
   function renderLiveMarket() {
     const tbody = document.querySelector('#live-market-table tbody');
     tbody.innerHTML = '';
-    liveMarkets.forEach(m => {
+    liveMarkets.forEach((m, i) => {
       const tr = document.createElement('tr');
       tr.innerHTML = `
         <td>${m.symbol}</td>
@@ -371,24 +360,61 @@
         <td>${m.price.toLocaleString()}</td>
         <td class="${m.change >=0 ? 'price-up' : 'price-down'}">
           ${m.change >=0 ? '+' : ''}${m.change.toFixed(2)}%
+          <canvas id="spark-${i}" width="100" height="30"></canvas>
         </td>
         <td>${m.volume.toLocaleString()}</td>
       `;
       tbody.appendChild(tr);
+      drawSparkline(`spark-${i}`, m.history);
     });
   }
 
-  renderLiveMarket();
+  function drawSparkline(id, data) {
+    const canvas = document.getElementById(id);
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    const max = Math.max(...data);
+    const min = Math.min(...data);
+    const stepX = canvas.width / (data.length-1);
+
+    ctx.beginPath();
+    ctx.moveTo(0, canvas.height - ((data[0]-min)/(max-min))*canvas.height);
+    for(let i=1;i<data.length;i++){
+      const x = stepX * i;
+      const y = canvas.height - ((data[i]-min)/(max-min))*canvas.height;
+      ctx.lineTo(x,y);
+    }
+    ctx.strokeStyle = "#0b6f2b";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  }
+
   setInterval(() => {
     liveMarkets.forEach(m => {
       const delta = (Math.random() * 2 - 1) * 0.02 * m.price;
       m.price = +(m.price + delta).toFixed(0);
       m.change = ((delta / m.price) * 100);
       m.volume = Math.max(0, m.volume + Math.floor(Math.random() * 5000 - 2500));
+      m.history.push(m.price);
+      if(m.history.length > 20) m.history.shift();
     });
     renderLiveMarket();
   }, 5000);
-</script>
 
+  renderLiveMarket();
+
+  /* ---- Slider Témoignages ---- */
+  let slider = document.getElementById('testimonial-slider');
+  let index = 0;
+  function showTestimonial(i) {
+    index = (i + slider.children.length) % slider.children.length;
+    slider.style.transform = `translateX(-${index * 100}%)`;
+  }
+  function nextTestimonial(){ showTestimonial(index+1); }
+  function prevTestimonial(){ showTestimonial(index-1); }
+  setInterval(nextTestimonial, 5000);
+</script>
 </body>
 </html>
