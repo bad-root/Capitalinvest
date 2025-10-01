@@ -261,7 +261,6 @@
         <div class="client-card"><img src="https://flagcdn.com/w160/gn.png" alt="Guinée" /><div class="name">Guinée</div></div>
         <div class="client-card"><img src="https://flagcdn.com/w160/gw.png" alt="Guinée‑Bissau" /><div class="name">Guinée‑Bissau</div></div>
         <div class="client-card"><img src="https://flagcdn.com/w160/ci.png" alt="Côte d’Ivoire" /><div class="name">Côte d’Ivoire</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/lu.png" alt="Luxembourg" /><div class="name">Luxembourg</div></div>
         <div class="client-card"><img src="https://flagcdn.com/w160/mg.png" alt="Madagascar" /><div class="name">Madagascar</div></div>
         <div class="client-card"><img src="https://flagcdn.com/w160/ml.png" alt="Mali" /><div class="name">Mali</div></div>
         <div class="client-card"><img src="https://flagcdn.com/w160/re.png" alt="Réunion" /><div class="name">Réunion</div></div>
@@ -298,40 +297,28 @@
 
   <section id="contact" class="contact">
     <h2>Contact & Ouverture de Compte</h2>
-    <form onsubmit="event.preventDefault();alert('Votre demande a été reçue !')">
-      <label for="nom">Nom complet</label>
-      <input type="text" id="nom" required />
-      <label for="email">Email</label>
-      <input type="email" id="email" required />
-      <label for="pays">Pays</label>
-      <select id="pays" required>
-       <option value="">Sélectionner votre pays</option>
-         <option>Algérie</option>
-          <option>Bénin</option>
-          <option>Burkina Faso</option>
-          <option>Burundi</option>
-          <option>Cameroun</option>
-          <option>Cap‑Vert</option>
-          <option>République centrafricaine</option>
-          <option>Tchad</option>
-          <option>Comores</option>
-          <option>Congo (Brazzaville)</option>
-          <option>RDC</option>
-          <option>Djibouti</option>
-          <option>Guinée équatoriale</option>
-          <option>Guinée</option>
-          <option>Côte d’Ivoire</option>
-          <option>Luxembourg</option>
-          <option>Madagascar</option>
-          <option>Mali</option>
-          <option>Mauritanie</option>
-          <option>Niger</option>
-          <option>Sénégal</option>
-          <option>Togo</option>
-          <option>Autre</option>
-      </select>
-      <button class="btn" type="submit">Envoyer</button>
-    </form>
+<form action="https://formspree.io/f/xjkebzwq" method="POST">
+  <label for="nom">Nom complet</label>
+  <input type="text" name="nom" id="nom" required>
+
+  <label for="email">Email</label>
+  <input type="email" name="email" id="email" required>
+
+  <label for="pays">Pays</label>
+  <select name="pays" id="pays" required>
+    <option value="">Sélectionner votre pays</option>
+    <option>Algérie</option>
+    <option>Bénin</option>
+    <option>Cameroun</option>
+    <option>Côte d’Ivoire</option>
+    <option>Gabon</option>
+    <option>Sénégal</option>
+    <option>Togo</option>
+    <option>Autre</option>
+  </select>
+
+  <button class="btn" type="submit">Envoyer</button>
+</form>
   </section>
 </main>
 
