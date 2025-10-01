@@ -294,32 +294,57 @@
       <button class="slider-btn next" onclick="nextTestimonial()">&#10095;</button>
     </div>
   </section>
+<section id="contact" class="contact">
+  <h2>Contact & Ouverture de Compte</h2>
+  <form action="https://formspree.io/f/xjkebzwq" method="POST">
+    <label for="nom">Nom complet</label>
+    <input type="text" name="nom" id="nom" required />
 
-  <section id="contact" class="contact">
-    <h2>Contact & Ouverture de Compte</h2>
-<form action="https://formspree.io/f/xjkebzwq" method="POST">
-  <label for="nom">Nom complet</label>
-  <input type="text" name="nom" id="nom" required>
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" required />
 
-  <label for="email">Email</label>
-  <input type="email" name="email" id="email" required>
+    <label for="telephone">Numéro de téléphone</label>
+    <input type="tel" name="telephone" id="telephone" required placeholder="+237 699 99 99 99" />
 
-  <label for="pays">Pays</label>
-  <select name="pays" id="pays" required>
-    <option value="">Sélectionner votre pays</option>
-    <option>Algérie</option>
-    <option>Bénin</option>
-    <option>Cameroun</option>
-    <option>Côte d’Ivoire</option>
-    <option>Gabon</option>
-    <option>Sénégal</option>
-    <option>Togo</option>
-    <option>Autre</option>
-  </select>
+    <label for="pays">Pays</label>
+    <select name="pays" id="pays" required>
+      <option value="">Sélectionner votre pays</option>
+      <option>Algérie</option>
+      <option>Bénin</option>
+      <option>Burkina Faso</option>
+      <option>Burundi</option>
+      <option>Cameroun</option>
+      <option>Cap-Vert</option>
+      <option>République centrafricaine</option>
+      <option>Tchad</option>
+      <option>Comores</option>
+      <option>Congo (Brazzaville)</option>
+      <option>RDC</option>
+      <option>Djibouti</option>
+      <option>Guinée équatoriale</option>
+      <option>Guinée</option>
+      <option>Côte d’Ivoire</option>
+      <option>Luxembourg</option>
+      <option>Madagascar</option>
+      <option>Mali</option>
+      <option>Mauritanie</option>
+      <option>Niger</option>
+      <option>Sénégal</option>
+      <option>Togo</option>
+      <option>Autre</option>
+    </select>
 
-  <button class="btn" type="submit">Envoyer</button>
-</form>
-  </section>
+    <label for="abonnement">Type d'abonnement</label>
+    <select name="abonnement" id="abonnement" required>
+      <option value="">Choisir un abonnement</option>
+      <option value="accessible">Accessible</option>
+      <option value="standard">Standard</option>
+      <option value="vip">VIP</option>
+    </select>
+
+    <button class="btn" type="submit">Envoyer</button>
+  </form>
+</section>
 </main>
 
 <footer class="footer">
