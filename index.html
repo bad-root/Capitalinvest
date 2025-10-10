@@ -481,51 +481,88 @@
   function prevTestimonial(){ showTestimonial(index-1); }
   setInterval(nextTestimonial, 5000);
 
-/* ---- Compteurs clients améliorés ---- */
-const cards = document.querySelectorAll('.client-card');
+/* ---- Compteurs de clients basés sur la prospérité économique ---- */
+const clientCards = document.querySelectorAll('.client-card');
 
-const afriqueCentrale = ["Cameroun","Tchad","Congo (Brazzaville)","République centrafricaine","RDC","Gabon","Guinée équatoriale"];
-const afriqueOuest = ["Sénégal","Côte d’Ivoire","Mali","Togo","Bénin","Burkina Faso","Niger","Guinée","Guinée-Bissau"];
-const autres = ["Algérie","Burundi","Cap-Vert","Comores","Djibouti","Madagascar","Réunion","Guyane"];
+const baseValues = {
+  // 🌍 Afrique Centrale
+  "Cameroun": 14000,
+  "Gabon": 20000,
+  "Tchad": 6500,
+  "Congo (Brazzaville)": 13000,
+  "République centrafricaine": 6000,
+  "RDC": 11000,
+  "Guinée équatoriale": 17000,
 
-function getRegion(p){
-  if(afriqueCentrale.includes(p)) return 'centrale';
-  if(afriqueOuest.includes(p)) return 'ouest';
-  return 'autres';
-}
+  // 🌍 Afrique de l’Ouest
+  "Sénégal": 18000,
+  "Côte d’Ivoire": 19000,
+  "Mali": 9000,
+  "Togo": 12000,
+  "Bénin": 12500,
+  "Burkina Faso": 8500,
+  "Niger": 8000,
+  "Guinée": 9500,
+  "Guinée-Bissau": 6000,
 
-function initCounters(){
-  cards.forEach(card=>{
+  // 🌍 Autres pays francophones
+  "Algérie": 20000,
+  "Burundi": 6000,
+  "Cap-Vert": 9500,
+  "Comores": 5500,
+  "Djibouti": 7000,
+  "Madagascar": 13000,
+  "Réunion": 18000,
+  "Guyane": 15000
+};
+
+function initEconomicCounters() {
+  clientCards.forEach(card => {
     const pays = card.dataset.pays;
     const key = `clients_${pays}`;
     const keyDate = `${key}_date`;
-    let base = 10000;
-    if(getRegion(pays)==='centrale') base = 16000;
-    if(getRegion(pays)==='ouest') base = 7250;
 
+    const base = baseValues[pays] || 10000;
     let val = localStorage.getItem(key);
-    if(!val){
+
+    // Si c’est la première fois, on enregistre la base
+    if (!val) {
       val = base;
       localStorage.setItem(key, base);
       localStorage.setItem(keyDate, Date.now());
     } else {
+      // Calcul du temps écoulé depuis la dernière mise à jour
       const last = localStorage.getItem(keyDate);
-      const days = Math.floor((Date.now() - last)/(1000*60*60*24));
-      const steps = Math.floor(days/3);
-      if(steps>0){
-        val = parseInt(val) + steps*4;
+      const days = Math.floor((Date.now() - last) / (1000 * 60 * 60 * 24));
+      const steps = Math.floor(days / 3);
+      if (steps > 0) {
+        val = parseInt(val) + steps * 4;
         localStorage.setItem(key, val);
         localStorage.setItem(keyDate, Date.now());
       }
     }
 
+    // Création du badge animé
     const countEl = document.createElement('div');
     countEl.className = 'client-count';
-    countEl.textContent = `${parseInt(val).toLocaleString()} abonnés`;
+    countEl.textContent = '...';
     card.appendChild(countEl);
+
+    let current = 0;
+    const target = parseInt(val);
+    const step = Math.ceil(target / 60);
+    const interval = setInterval(() => {
+      current += step;
+      if (current >= target) {
+        current = target;
+        clearInterval(interval);
+      }
+      countEl.textContent = `${current.toLocaleString()} abonnés`;
+    }, 20);
   });
 }
-initCounters();
+
+initEconomicCounters();
 
 </script>
 </body>
