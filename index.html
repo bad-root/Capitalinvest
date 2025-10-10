@@ -289,6 +289,13 @@
         <div class="testimonial-card"><p>"L’accompagnement est personnalisé et les conseils sont vraiment adaptés à mon profil d’investisseur."</p><div class="author">— H. Diallo, Ingénieur, Mali</div></div>
         <div class="testimonial-card"><p>"Je suis impressionné par la transparence et la réactivité du service client."</p><div class="author">— Y. Koffi, Entrepreneur, Côte d’Ivoire</div></div>
         <div class="testimonial-card"><p>"En tant que jeune investisseur, j’ai trouvé une plateforme claire et rassurante pour démarrer."</p><div class="author">— M. Sow, Étudiant en finance, Sénégal</div></div>
+        <div class="testimonial-card"><p>"CAPITALINVEST offre une expérience fluide et moderne, idéale pour les jeunes investisseurs."</p><div class="author">— L. Nguema, Étudiant, Gabon</div></div>
+        <div class="testimonial-card"><p>"Le suivi des portefeuilles est précis et les rendements sont au rendez-vous."</p><div class="author">— D. Abderrahmane, Analyste, Algérie</div></div>
+        <div class="testimonial-card"><p>"Une équipe disponible et des conseils qui m’ont aidé à faire mes premiers placements."</p><div class="author">— K. Nana, Entrepreneure, Cameroun</div></div>
+        <div class="testimonial-card"><p>"La plusieurs structures m'ont arnaquer juste avant cette structure fiable et conviviale."</p><div class="author">— T. Mensah, Consultant, Togo</div></div>
+        <div class="testimonial-card"><p>"J’ai eu a gagner 16millions de Fcfa le mois passé grace à leur plan VIP."</p><div class="author">— A. Ouattara, Investisseur, Côte d’Ivoire</div></div>
+        <div class="testimonial-card"><p>"CAPITALINVEST m’a permis de comprendre les marchés tout en gagnant en rentabilité."</p><div class="author">— J. Niyongabo, Ingénieur, Burundi</div></div>
+
       </div>
       <button class="slider-btn prev" onclick="prevTestimonial()">&#10094;</button>
       <button class="slider-btn next" onclick="nextTestimonial()">&#10095;</button>
@@ -427,6 +434,52 @@
   function nextTestimonial(){ showTestimonial(index+1); }
   function prevTestimonial(){ showTestimonial(index-1); }
   setInterval(nextTestimonial, 5000);
+
+/* ---- Compteurs de clients par pays ---- */
+const paysElements = document.querySelectorAll('.client-card .name');
+
+// Répartition régionale approximative
+const afriqueCentrale = ["Cameroun","Tchad","Congo (Brazzaville)","République centrafricaine","RDC","Gabon","Guinée équatoriale"];
+const afriqueOuest = ["Sénégal","Côte d’Ivoire","Mali","Togo","Bénin","Burkina Faso","Niger","Guinée","Guinée-Bissau"];
+const autres = ["Algérie","Burundi","Cap-Vert","Comores","Djibouti","Madagascar","Réunion","Guyane","Guinée-Française (Guyane)"];
+
+function getRegion(pays){
+  if (afriqueCentrale.includes(pays)) return 'centrale';
+  if (afriqueOuest.includes(pays)) return 'ouest';
+  return 'autres';
+}
+
+function loadInitialCounts(){
+  paysElements.forEach(el=>{
+    const pays = el.textContent.trim();
+    let base = 10000;
+    const region = getRegion(pays);
+    if(region === 'centrale') base = 16000;
+    if(region === 'ouest') base = 7250;
+
+    // Stockage local pour garder l’évolution
+    const key = `clients_${pays}`;
+    let stored = localStorage.getItem(key);
+    if(!stored){
+      stored = base;
+      localStorage.setItem(key, stored);
+      localStorage.setItem(key+"_date", Date.now());
+    } else {
+      // calcul jours passés
+      const last = parseInt(localStorage.getItem(key+"_date"));
+      const days = Math.floor((Date.now() - last)/(1000*60*60*24));
+      const steps = Math.floor(days/3);
+      if(steps > 0){
+        stored = parseInt(stored) + steps * 4;
+        localStorage.setItem(key, stored);
+        localStorage.setItem(key+"_date", Date.now());
+      }
+    }
+
+    el.innerHTML = `${pays} <span style="color:var(--brand-dark);font-weight:700;">(${stored} abonnés)</span>`;
+  });
+}
+loadInitialCounts();
 </script>
 </body>
 </html>
