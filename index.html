@@ -167,6 +167,35 @@
     .slider-btn:hover { background: rgba(0,0,0,0.6); }
     .slider-btn.prev { left: 10px; }
     .slider-btn.next { right: 10px; }
+    .region-group {
+  margin-top: 30px;
+}
+.region-group h3 {
+  color: var(--brand-dark);
+  font-size: 20px;
+  margin-bottom: 14px;
+  border-left: 5px solid var(--brand);
+  padding-left: 10px;
+}
+.client-card {
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+.client-card:hover {
+  transform: translateY(-4px);
+}
+.client-count {
+  display: inline-block;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 14px;
+  margin-top: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
   </style>
 </head>
 <body>
@@ -242,34 +271,51 @@
   </section>
 
  <section id="clients" class="clients">
-    <h2>Clients en Afrique francophone</h2>
-    <div class="client-cards">
-      <div class="client-card"><img src="https://flagcdn.com/w160/dz.png" alt="Algérie" /><div class="name">Algérie</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/bj.png" alt="Bénin" /><div class="name">Bénin</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/bf.png" alt="Burkina Faso" /><div class="name">Burkina Faso</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/bi.png" alt="Burundi" /><div class="name">Burundi</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/cm.png" alt="Cameroun" /><div class="name">Cameroun</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/cv.png" alt="Cap‑Vert" /><div class="name">Cap‑Vert</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/cf.png" alt="République centrafricaine" /><div class="name">République centrafricaine</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/td.png" alt="Tchad" /><div class="name">Tchad</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/km.png" alt="Comores" /><div class="name">Comores</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/cg.png" alt="Congo (Brazzaville)" /><div class="name">Congo (Brazzaville)</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/cd.png" alt="RDC" /><div class="name">République démocratique du Congo</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/dj.png" alt="Djibouti" /><div class="name">Djibouti</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/gq.png" alt="Guinée équatoriale" /><div class="name">Guinée équatoriale</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/gf.png" alt="Guinée‑Française (Guyane)" /><div class="name">Guyane</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/gn.png" alt="Guinée" /><div class="name">Guinée</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/gw.png" alt="Guinée‑Bissau" /><div class="name">Guinée‑Bissau</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/ci.png" alt="Côte d’Ivoire" /><div class="name">Côte d’Ivoire</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/mg.png" alt="Madagascar" /><div class="name">Madagascar</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/ml.png" alt="Mali" /><div class="name">Mali</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/re.png" alt="Réunion" /><div class="name">Réunion</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/ne.png" alt="Niger" /><div class="name">Niger</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/sn.png" alt="Sénégal" /><div class="name">Sénégal</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/td.png" alt="Tchad" /><div class="name">Tchad</div></div>
-        <div class="client-card"><img src="https://flagcdn.com/w160/tg.png" alt="Togo" /><div class="name">Togo</div></div>
+  <h2>Clients en Afrique francophone</h2>
+
+  <div class="region-group">
+    <h3>🌍 Afrique Centrale</h3>
+    <div class="client-cards region-centrale">
+      <div class="client-card" data-pays="Cameroun"><img src="https://flagcdn.com/w160/cm.png" alt="Cameroun" /><div class="name">Cameroun</div></div>
+      <div class="client-card" data-pays="Tchad"><img src="https://flagcdn.com/w160/td.png" alt="Tchad" /><div class="name">Tchad</div></div>
+      <div class="client-card" data-pays="Gabon"><img src="https://flagcdn.com/w160/ga.png" alt="Gabon" /><div class="name">Gabon</div></div>
+      <div class="client-card" data-pays="Congo (Brazzaville)"><img src="https://flagcdn.com/w160/cg.png" alt="Congo" /><div class="name">Congo (Brazzaville)</div></div>
+      <div class="client-card" data-pays="République centrafricaine"><img src="https://flagcdn.com/w160/cf.png" alt="République centrafricaine" /><div class="name">République centrafricaine</div></div>
+      <div class="client-card" data-pays="RDC"><img src="https://flagcdn.com/w160/cd.png" alt="RDC" /><div class="name">République démocratique du Congo</div></div>
+      <div class="client-card" data-pays="Gabon"><img src="https://flagcdn.com/w160/ga.png" alt="Gabon" /><div class="name">Gabon</div></div>
+      <div class="client-card" data-pays="Guinée équatoriale"><img src="https://flagcdn.com/w160/gq.png" alt="Guinée équatoriale" /><div class="name">Guinée équatoriale</div></div>
     </div>
-  </section>
+  </div>
+
+  <div class="region-group">
+    <h3>🌍 Afrique de l’Ouest</h3>
+    <div class="client-cards region-ouest">
+      <div class="client-card" data-pays="Sénégal"><img src="https://flagcdn.com/w160/sn.png" alt="Sénégal" /><div class="name">Sénégal</div></div>
+      <div class="client-card" data-pays="Côte d’Ivoire"><img src="https://flagcdn.com/w160/ci.png" alt="Côte d’Ivoire" /><div class="name">Côte d’Ivoire</div></div>
+      <div class="client-card" data-pays="Mali"><img src="https://flagcdn.com/w160/ml.png" alt="Mali" /><div class="name">Mali</div></div>
+      <div class="client-card" data-pays="Togo"><img src="https://flagcdn.com/w160/tg.png" alt="Togo" /><div class="name">Togo</div></div>
+      <div class="client-card" data-pays="Bénin"><img src="https://flagcdn.com/w160/bj.png" alt="Bénin" /><div class="name">Bénin</div></div>
+      <div class="client-card" data-pays="Burkina Faso"><img src="https://flagcdn.com/w160/bf.png" alt="Burkina Faso" /><div class="name">Burkina Faso</div></div>
+      <div class="client-card" data-pays="Niger"><img src="https://flagcdn.com/w160/ne.png" alt="Niger" /><div class="name">Niger</div></div>
+      <div class="client-card" data-pays="Guinée"><img src="https://flagcdn.com/w160/gn.png" alt="Guinée" /><div class="name">Guinée</div></div>
+      <div class="client-card" data-pays="Guinée-Bissau"><img src="https://flagcdn.com/w160/gw.png" alt="Guinée-Bissau" /><div class="name">Guinée-Bissau</div></div>
+    </div>
+  </div>
+
+  <div class="region-group">
+    <h3>🌍 Autres Pays Francophones</h3>
+    <div class="client-cards region-autres">
+      <div class="client-card" data-pays="Algérie"><img src="https://flagcdn.com/w160/dz.png" alt="Algérie" /><div class="name">Algérie</div></div>
+      <div class="client-card" data-pays="Burundi"><img src="https://flagcdn.com/w160/bi.png" alt="Burundi" /><div class="name">Burundi</div></div>
+      <div class="client-card" data-pays="Cap-Vert"><img src="https://flagcdn.com/w160/cv.png" alt="Cap-Vert" /><div class="name">Cap-Vert</div></div>
+      <div class="client-card" data-pays="Comores"><img src="https://flagcdn.com/w160/km.png" alt="Comores" /><div class="name">Comores</div></div>
+      <div class="client-card" data-pays="Djibouti"><img src="https://flagcdn.com/w160/dj.png" alt="Djibouti" /><div class="name">Djibouti</div></div>
+      <div class="client-card" data-pays="Madagascar"><img src="https://flagcdn.com/w160/mg.png" alt="Madagascar" /><div class="name">Madagascar</div></div>
+      <div class="client-card" data-pays="Réunion"><img src="https://flagcdn.com/w160/re.png" alt="Réunion" /><div class="name">Réunion</div></div>
+      <div class="client-card" data-pays="Guyane"><img src="https://flagcdn.com/w160/gf.png" alt="Guyane" /><div class="name">Guyane</div></div>
+    </div>
+  </div>
+</section>
 
 <section id="apropos" class="about">
     <h2>À propos de CAPITALINVEST</h2>
@@ -285,14 +331,14 @@
         <div class="testimonial-card"><p>"Grâce à CAPITALINVEST, j’ai pu investir en toute confiance sur le marché régional."</p><div class="author">— A. Kouame, Investisseur, Côte d’Ivoire</div></div>
         <div class="testimonial-card"><p>"Service rapide, informations claires, équipe à l’écoute."</p><div class="author">— M. Bayo, Trader, Sénégal</div></div>
         <div class="testimonial-card"><p>"Plateforme sécurisée et interface professionnelle."</p><div class="author">— F. Obiang, Entrepreneur, Gabon</div></div>
-        <div class="testimonial-card"><p>"CAPITALINVEST m’a permis d’accéder facilement à des opportunités d’investissement que je n’aurais jamais imaginées."</p><div class="author">— S. Traoré, Analyste financier, Burkina Faso</div></div>
+        <div class="testimonial-card"><p>"CAPITALINVEST m’a permis d’accéder facilement à des opportunités d’investissement que je n’aurais jamais imaginées, toute ma famille a un compte chez eux."</p><div class="author">— S. Traoré, Analyste financier, Burkina Faso</div></div>
         <div class="testimonial-card"><p>"L’accompagnement est personnalisé et les conseils sont vraiment adaptés à mon profil d’investisseur."</p><div class="author">— H. Diallo, Ingénieur, Mali</div></div>
         <div class="testimonial-card"><p>"Je suis impressionné par la transparence et la réactivité du service client."</p><div class="author">— Y. Koffi, Entrepreneur, Côte d’Ivoire</div></div>
         <div class="testimonial-card"><p>"En tant que jeune investisseur, j’ai trouvé une plateforme claire et rassurante pour démarrer."</p><div class="author">— M. Sow, Étudiant en finance, Sénégal</div></div>
         <div class="testimonial-card"><p>"CAPITALINVEST offre une expérience fluide et moderne, idéale pour les jeunes investisseurs."</p><div class="author">— L. Nguema, Étudiant, Gabon</div></div>
         <div class="testimonial-card"><p>"Le suivi des portefeuilles est précis et les rendements sont au rendez-vous."</p><div class="author">— D. Abderrahmane, Analyste, Algérie</div></div>
         <div class="testimonial-card"><p>"Une équipe disponible et des conseils qui m’ont aidé à faire mes premiers placements."</p><div class="author">— K. Nana, Entrepreneure, Cameroun</div></div>
-        <div class="testimonial-card"><p>"La plusieurs structures m'ont arnaquer juste avant cette structure fiable et conviviale."</p><div class="author">— T. Mensah, Consultant, Togo</div></div>
+        <div class="testimonial-card"><p>"Plusieurs structures m'ont arnaquer juste avant cette structure."</p><div class="author">— T. Mensah, Consultant, Togo</div></div>
         <div class="testimonial-card"><p>"J’ai eu a gagner 16millions de Fcfa le mois passé grace à leur plan VIP."</p><div class="author">— A. Ouattara, Investisseur, Côte d’Ivoire</div></div>
         <div class="testimonial-card"><p>"CAPITALINVEST m’a permis de comprendre les marchés tout en gagnant en rentabilité."</p><div class="author">— J. Niyongabo, Ingénieur, Burundi</div></div>
 
@@ -435,51 +481,52 @@
   function prevTestimonial(){ showTestimonial(index-1); }
   setInterval(nextTestimonial, 5000);
 
-/* ---- Compteurs de clients par pays ---- */
-const paysElements = document.querySelectorAll('.client-card .name');
+/* ---- Compteurs clients améliorés ---- */
+const cards = document.querySelectorAll('.client-card');
 
-// Répartition régionale approximative
 const afriqueCentrale = ["Cameroun","Tchad","Congo (Brazzaville)","République centrafricaine","RDC","Gabon","Guinée équatoriale"];
 const afriqueOuest = ["Sénégal","Côte d’Ivoire","Mali","Togo","Bénin","Burkina Faso","Niger","Guinée","Guinée-Bissau"];
-const autres = ["Algérie","Burundi","Cap-Vert","Comores","Djibouti","Madagascar","Réunion","Guyane","Guinée-Française (Guyane)"];
+const autres = ["Algérie","Burundi","Cap-Vert","Comores","Djibouti","Madagascar","Réunion","Guyane"];
 
-function getRegion(pays){
-  if (afriqueCentrale.includes(pays)) return 'centrale';
-  if (afriqueOuest.includes(pays)) return 'ouest';
+function getRegion(p){
+  if(afriqueCentrale.includes(p)) return 'centrale';
+  if(afriqueOuest.includes(p)) return 'ouest';
   return 'autres';
 }
 
-function loadInitialCounts(){
-  paysElements.forEach(el=>{
-    const pays = el.textContent.trim();
-    let base = 10000;
-    const region = getRegion(pays);
-    if(region === 'centrale') base = 16000;
-    if(region === 'ouest') base = 7250;
-
-    // Stockage local pour garder l’évolution
+function initCounters(){
+  cards.forEach(card=>{
+    const pays = card.dataset.pays;
     const key = `clients_${pays}`;
-    let stored = localStorage.getItem(key);
-    if(!stored){
-      stored = base;
-      localStorage.setItem(key, stored);
-      localStorage.setItem(key+"_date", Date.now());
+    const keyDate = `${key}_date`;
+    let base = 10000;
+    if(getRegion(pays)==='centrale') base = 16000;
+    if(getRegion(pays)==='ouest') base = 7250;
+
+    let val = localStorage.getItem(key);
+    if(!val){
+      val = base;
+      localStorage.setItem(key, base);
+      localStorage.setItem(keyDate, Date.now());
     } else {
-      // calcul jours passés
-      const last = parseInt(localStorage.getItem(key+"_date"));
+      const last = localStorage.getItem(keyDate);
       const days = Math.floor((Date.now() - last)/(1000*60*60*24));
       const steps = Math.floor(days/3);
-      if(steps > 0){
-        stored = parseInt(stored) + steps * 4;
-        localStorage.setItem(key, stored);
-        localStorage.setItem(key+"_date", Date.now());
+      if(steps>0){
+        val = parseInt(val) + steps*4;
+        localStorage.setItem(key, val);
+        localStorage.setItem(keyDate, Date.now());
       }
     }
 
-    el.innerHTML = `${pays} <span style="color:var(--brand-dark);font-weight:700;">(${stored} abonnés)</span>`;
+    const countEl = document.createElement('div');
+    countEl.className = 'client-count';
+    countEl.textContent = `${parseInt(val).toLocaleString()} abonnés`;
+    card.appendChild(countEl);
   });
 }
-loadInitialCounts();
+initCounters();
+
 </script>
 </body>
 </html>
