@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CAPITALINVEST — Bourse & Investissement</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --brand: #0b6f2b;
+      --brand-dark: #094f1b;
+      --accent: #f59e0b;
+      --bg: #f8faf9;
+      --text-dark: #0b1b2b;
+      --text-muted: #6b7280;
+      --white: #ffffff;
+      --border-light: #e5e7eb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ---- Amélioration visuelle globale ---- */
+body {
+  background: linear-gradient(180deg, #f7f9f8 0%, #edf3ee 100%);
+  font-family: 'Inter', sans-serif;
+  color: var(--text-dark);
+  line-height: 1.6;
+ }
+    a { text-decoration: none; }
+    header {
+      background: var(--brand);
+      color: var(--white);
+      padding: 20px 0;
+      text-align: center;
+    }
+    .logo { font-size: 28px; font-weight: 800; }
+    nav {
+      background: var(--white);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 30px;
+      padding: 14px 0;
+    }
+    nav a {
+      color: var(--text-dark);
+      font-weight: 600;
+      padding: 10px;
+    }
+    nav a:hover, nav a.active {
+      color: var(--brand);
+      border-bottom: 3px solid var(--brand);
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+    .hero {
+      background: linear-gradient(135deg, var(--brand-dark), var(--brand));
+      color: var(--white);
+      padding: 60px 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .hero h1 { font-size: 36px; margin-bottom: 12px; }
+    .hero p { font-size: 18px; }
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      background: var(--brand);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      margin-top: 16px;
+      cursor: pointer;
+    }
+    .btn.secondary {
+      background: transparent;
+      color: var(--brand);
+      border: 1px solid var(--brand);
+    }
+    section { margin-top: 40px; }
+    h2 { margin-bottom: 20px; color: var(--brand-dark); }
+    .service-cards, .client-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .service-card, .testimonial-card, .client-card {
+      background: var(--white);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    }
+    .service-card h3, .testimonial-card .author { color: var(--brand); }
+    .testimonial-card p { font-style: italic; margin-bottom: 10px; }
+    .client-card img {
+      width: 80px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+    .client-card .name { margin-top: 10px; font-weight: 600; }
+    .markets table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      background: var(--white);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+    }
+    .markets th, .markets td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .markets th { background: var(--brand); color: var(--white); }
+    .price-up { color: green; font-weight: 700; }
+    .price-down { color: red; font-weight: 700; }
+    .about, .contact {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+    }
+    form input, form select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 16px;
+      border: 1px solid var(--border-light);
+      border-radius: 4px;
+    }
+    label { font-weight: 600; }
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 20px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* ---- Slider Témoignages ---- */
+    #testimonial-slider-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+    #testimonial-slider {
+      display: flex;
+      transition: transform 0.6s ease-in-out;
+    }
+    #testimonial-slider .testimonial-card {
+      min-width: 100%;
+      box-sizing: border-box;
+    }
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.4);
+      color: #fff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+    .slider-btn:hover { background: rgba(0,0,0,0.6); }
+    .slider-btn.prev { left: 10px; }
+    .slider-btn.next { right: 10px; }
+    .region-group {
+  margin-top: 30px;
+}
+.region-group h3 {
+  color: var(--brand-dark);
+  font-size: 20px;
+  margin-bottom: 14px;
+  border-left: 5px solid var(--brand);
+  padding-left: 10px;
+}
+.client-card {
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+.client-card:hover {
+  transform: translateY(-4px);
+}
+.client-count {
+  display: inline-block;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 14px;
+  margin-top: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+
+/* Hero avec effet de profondeur */
+.hero {
+  background: linear-gradient(135deg, #0b6f2b, #0e9c3d);
+  box-shadow: 0 8px 24px rgba(11, 111, 43, 0.3);
+  animation: fadeIn 1s ease-out;
+}
+
+/* Cartes modernisées */
+.service-card, .client-card, .testimonial-card, .about, .contact {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(11,111,43,0.1);
+}
+.service-card:hover, .client-card:hover, .testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+/* Boutons */
+.btn {
+  background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+  box-shadow: 0 4px 10px rgba(11, 111, 43, 0.25);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(11,111,43,0.35);
+}
+
+/* Effet de survol sur les drapeaux */
+.client-card img {
+  transition: transform 0.3s ease;
+}
+.client-card:hover img {
+  transform: scale(1.1);
+}
+
+/* Animation douce d’apparition */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Titres stylisés */
+h2 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 3px;
+  background: var(--brand);
+  border-radius: 2px;
+}
+/* ---- Section Plans d’abonnement ---- */
+#plans {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  padding: 30px 20px;
+  margin-top: 40px;
+}
+
+.plan-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background: #f0f8f3;
+  color: var(--brand-dark);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 10px 22px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  background: var(--brand);
+  color: white;
+}
+
+.tab-btn.active {
+  background: var(--brand-dark);
+  color: white;
+  box-shadow: 0 4px 12px rgba(11,111,43,0.3);
+}
+
+.plans-content {
+  position: relative;
+}
+
+.plan-layer {
+  display: none;
+  animation: fadeLayer 0.5s ease;
+}
+
+.plan-layer.visible {
+  display: block;
+}
+
+@keyframes fadeLayer {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.plan-title {
+  color: var(--brand-dark);
+  font-size: 20px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.plan-list {
+  list-style: none;
+  background: #f9fafb;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.plan-list li {
+  display: flex;
+  justify-content: space-between;
+  background: white;
+  border-radius: 8px;
+  padding: 8px 14px;
+  margin: 6px 0;
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.plan-list strong {
+  color: var(--brand-dark);
+}
+
+.plan-list span {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.note {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.custom-plan {
+  background: #eaf5ef;
+  border-radius: 10px;
+  padding: 14px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-dark);
+}
+
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo">CAPITALINVEST</div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#home" class="active">Accueil</a></li>
+    <li><a href="#marches">Marchés</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#clients">Clients Afrique</a></li>
+    <li><a href="#apropos">À propos</a></li>
+    <li><a href="#Plans d'Abonnement">Plans d'Abonnement</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main class="container">
+  <section id="home" class="hero">
+    <h1>Bienvenue chez CAPITALINVEST</h1>
+    <p>Votre passerelle pour les marchés financiers en Afrique francophone — transparence, sécurité, performance.</p>
+    <a href="#contact" class="btn">Ouvrir un Compte</a>
+  </section>
+
+ <div class="card" style="display:flex;gap:12px;align-items:center">
+            <div style="flex:1">
+              <div class="small">Valeur de portefeuille</div>
+              <div style="font-size:22px;font-weight:800">249 808 000 FCFA</div>
+              <div class="muted">Performance 1M: <span class="price-up">+3.8%</span></div>
+            </div>
+            <div style="width:220px">
+              <canvas id="sparkline" width="220" height="80"></canvas>
+            </div>
+  </div>
+
+ <section id="services">
+    <h2>Nos Services</h2>
+    <div class="service-cards">
+      <div class="service-card">
+        <h3>Intermédiation & Transmission d'Ordres</h3>
+        <p>Passage d’ordres d’actions, obligations, titres publics via notre plateforme sécurisée.</p>
+      </div>
+      <div class="service-card">
+        <h3>Conseil Financier Personnalisé</h3>
+        <p>Évaluation de votre profil, stratégie sur mesure, accompagnement professionnel.</p>
+      </div>
+      <div class="service-card">
+        <h3>Gestion de Portefeuille</h3>
+        <p>Suivi régulier, diversification, optimisation du risque/rendement.</p>
+      </div>
+      <div class="service-card">
+        <h3>Produits Financiers Diversifiés</h3>
+        <p>Accès aux actions, obligations, fonds, titres publics, etc.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="marches" class="markets">
+    <h2>Marchés en Direct</h2>
+    <table id="live-market-table">
+      <thead>
+      <tr>
+        <th>Symbole</th>
+        <th>Entreprise</th>
+        <th>Prix</th>
+        <th>Variation</th>
+        <th>Volume</th>
+      </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+ <section id="clients" class="clients">
+  <h2>Clients en Afrique francophone</h2>
+
+  <div class="region-group">
+    <h3>🌍 Afrique Centrale</h3>
+    <div class="client-cards region-centrale">
+      <div class="client-card" data-pays="Gabon"><img src="https://flagcdn.com/w160/ga.png" alt="Gabon" /><div class="name">Gabon</div></div>
+      <div class="client-card" data-pays="Tchad"><img src="https://flagcdn.com/w160/td.png" alt="Tchad" /><div class="name">Tchad</div></div>
+      <div class="client-card" data-pays="Cameroun"><img src="https://flagcdn.com/w160/cm.png" alt="Cameroun" /><div class="name">Cameroun</div></div>
+      <div class="client-card" data-pays="Congo (Brazzaville)"><img src="https://flagcdn.com/w160/cg.png" alt="Congo" /><div class="name">Congo (Brazzaville)</div></div>
+      <div class="client-card" data-pays="République centrafricaine"><img src="https://flagcdn.com/w160/cf.png" alt="République centrafricaine" /><div class="name">République centrafricaine</div></div>
+      <div class="client-card" data-pays="RDC"><img src="https://flagcdn.com/w160/cd.png" alt="RDC" /><div class="name">République démocratique du Congo</div></div>
+      <div class="client-card" data-pays="Guinée équatoriale"><img src="https://flagcdn.com/w160/gq.png" alt="Guinée équatoriale" /><div class="name">Guinée équatoriale</div></div>
+    </div>
+  </div>
+
+  <div class="region-group">
+    <h3>🌍 Afrique de l’Ouest</h3>
+    <div class="client-cards region-ouest">
+      <div class="client-card" data-pays="Sénégal"><img src="https://flagcdn.com/w160/sn.png" alt="Sénégal" /><div class="name">Sénégal</div></div>
+      <div class="client-card" data-pays="Côte d’Ivoire"><img src="https://flagcdn.com/w160/ci.png" alt="Côte d’Ivoire" /><div class="name">Côte d’Ivoire</div></div>
+      <div class="client-card" data-pays="Mali"><img src="https://flagcdn.com/w160/ml.png" alt="Mali" /><div class="name">Mali</div></div>
+      <div class="client-card" data-pays="Togo"><img src="https://flagcdn.com/w160/tg.png" alt="Togo" /><div class="name">Togo</div></div>
+      <div class="client-card" data-pays="Bénin"><img src="https://flagcdn.com/w160/bj.png" alt="Bénin" /><div class="name">Bénin</div></div>
+      <div class="client-card" data-pays="Burkina Faso"><img src="https://flagcdn.com/w160/bf.png" alt="Burkina Faso" /><div class="name">Burkina Faso</div></div>
+      <div class="client-card" data-pays="Niger"><img src="https://flagcdn.com/w160/ne.png" alt="Niger" /><div class="name">Niger</div></div>
+      <div class="client-card" data-pays="Guinée"><img src="https://flagcdn.com/w160/gn.png" alt="Guinée" /><div class="name">Guinée</div></div>
+      <div class="client-card" data-pays="Guinée-Bissau"><img src="https://flagcdn.com/w160/gw.png" alt="Guinée-Bissau" /><div class="name">Guinée-Bissau</div></div>
+    </div>
+  </div>
+
+  <div class="region-group">
+    <h3>🌍 Autres Pays Francophones</h3>
+    <div class="client-cards region-autres">
+      <div class="client-card" data-pays="Algérie"><img src="https://flagcdn.com/w160/dz.png" alt="Algérie" /><div class="name">Algérie</div></div>
+      <div class="client-card" data-pays="Burundi"><img src="https://flagcdn.com/w160/bi.png" alt="Burundi" /><div class="name">Burundi</div></div>
+      <div class="client-card" data-pays="Cap-Vert"><img src="https://flagcdn.com/w160/cv.png" alt="Cap-Vert" /><div class="name">Cap-Vert</div></div>
+      <div class="client-card" data-pays="Comores"><img src="https://flagcdn.com/w160/km.png" alt="Comores" /><div class="name">Comores</div></div>
+      <div class="client-card" data-pays="Djibouti"><img src="https://flagcdn.com/w160/dj.png" alt="Djibouti" /><div class="name">Djibouti</div></div>
+      <div class="client-card" data-pays="Madagascar"><img src="https://flagcdn.com/w160/mg.png" alt="Madagascar" /><div class="name">Madagascar</div></div>
+      <div class="client-card" data-pays="Réunion"><img src="https://flagcdn.com/w160/re.png" alt="Réunion" /><div class="name">Réunion</div></div>
+      <div class="client-card" data-pays="Guyane"><img src="https://flagcdn.com/w160/gf.png" alt="Guyane" /><div class="name">Guyane</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="apropos" class="about">
+    <h2>À propos de CAPITALINVEST</h2>
+    <p><strong>CAPITALINVEST</strong> est une société de bourse agréée en intermédiation financière et gestion d’actifs.</p>
+    <p><strong>Vision :</strong> Devenir la plateforme de référence pour les investisseurs francophones en Afrique.</p>
+    <p><strong>Mission :</strong> Rendre les marchés financiers accessibles, informer, conseiller et équiper nos clients d’outils fiables.</p>
+  </section>
+
+  <section id="testimonials" class="testimonials">
+    <h2>Témoignages</h2>
+    <div id="testimonial-slider-wrapper">
+      <div class="testimonial-list" id="testimonial-slider">
+        <div class="testimonial-card"><p>"Grâce à CAPITALINVEST, j’ai pu investir en toute confiance sur le marché régional."</p><div class="author">— A. Kouame, Investisseur, Côte d’Ivoire</div></div>
+        <div class="testimonial-card"><p>"Service rapide, informations claires, équipe à l’écoute."</p><div class="author">— M. Bayo, Trader, Sénégal</div></div>
+        <div class="testimonial-card"><p>"Plateforme sécurisée et interface professionnelle."</p><div class="author">— F. Obiang, Entrepreneur, Gabon</div></div>
+        <div class="testimonial-card"><p>"CAPITALINVEST m’a permis d’accéder facilement à des opportunités d’investissement que je n’aurais jamais imaginées, toute ma famille a un compte chez eux."</p><div class="author">— S. Traoré, Analyste financier, Burkina Faso</div></div>
+        <div class="testimonial-card"><p>"L’accompagnement est personnalisé et les conseils sont vraiment adaptés à mon profil d’investisseur."</p><div class="author">— H. Diallo, Ingénieur, Mali</div></div>
+        <div class="testimonial-card"><p>"Je suis impressionné par la transparence et la réactivité du service client."</p><div class="author">— Y. Koffi, Entrepreneur, Côte d’Ivoire</div></div>
+        <div class="testimonial-card"><p>"En tant que jeune investisseur, j’ai trouvé une plateforme claire et rassurante pour démarrer."</p><div class="author">— M. Sow, Étudiant en finance, Sénégal</div></div>
+        <div class="testimonial-card"><p>"CAPITALINVEST offre une expérience fluide et moderne, idéale pour les jeunes investisseurs."</p><div class="author">— L. Nguema, Étudiant, Gabon</div></div>
+        <div class="testimonial-card"><p>"Le suivi des portefeuilles est précis et les rendements sont au rendez-vous."</p><div class="author">— D. Abderrahmane, Analyste, Algérie</div></div>
+        <div class="testimonial-card"><p>"Une équipe disponible et des conseils qui m’ont aidé à faire mes premiers placements."</p><div class="author">— K. Nana, Entrepreneure, Cameroun</div></div>
+        <div class="testimonial-card"><p>"Plusieurs structures m'ont arnaquer juste avant cette structure."</p><div class="author">— T. Mensah, Consultant, Togo</div></div>
+        <div class="testimonial-card"><p>"J’ai eu a gagner 16millions de Fcfa le mois passé grace à leur plan VIP."</p><div class="author">— A. Ouattara, Investisseur, Côte d’Ivoire</div></div>
+        <div class="testimonial-card"><p>"CAPITALINVEST m’a permis de comprendre les marchés tout en gagnant en rentabilité."</p><div class="author">— J. Niyongabo, Ingénieur, Burundi</div></div>
+
+      </div>
+      <button class="slider-btn prev" onclick="prevTestimonial()">&#10094;</button>
+      <button class="slider-btn next" onclick="nextTestimonial()">&#10095;</button>
+    </div>
+  </section>
+
+<section <section id="plans d'Abonnement" class="Plans d'Abonnement">
+  <h2>Plans d’Abonnement</h2>
+
+  <div class="plan-tabs">
+    <button class="tab-btn active" data-target="accessible">Accessible</button>
+    <button class="tab-btn" data-target="standard">Standard</button>
+    <button class="tab-btn" data-target="vip">VIP</button>
+  </div>
+
+  <div class="plans-content">
+
+    <!-- Accessible -->
+    <div class="plan-layer visible" id="accessible">
+      <h3 class="plan-title">Accessible 💼</h3>
+      <ul class="plan-list">
+        <li><strong>30.000 F</strong> → <span>230.000 F</span></li>
+        <li><strong>45.000 F</strong> → <span>390.000 F</span></li>
+      </ul>
+      <p class="note">💡 Idéal pour les nouveaux investisseurs qui souhaitent démarrer en toute sécurité.</p>
+    </div>
+
+    <!-- Standard -->
+    <div class="plan-layer" id="standard">
+      <h3 class="plan-title">Standard 💹</h3>
+      <ul class="plan-list">
+        <li><strong>50.000 F</strong> → <span>450.000 F</span></li>
+        <li><strong>60.000 F</strong> → <span>530.000 F</span></li>
+        <li><strong>70.000 F</strong> → <span>600.000 F</span></li>
+        <li><strong>80.000 F</strong> → <span>650.000 F</span></li>
+      </ul>
+      <p class="note">⭐ Recommandé pour les investisseurs intermédiaires souhaitant un meilleur rendement.</p>
+    </div>
+
+    <!-- VIP -->
+    <div class="plan-layer" id="vip">
+      <h3 class="plan-title">VIP 👑</h3>
+      <ul class="plan-list">
+        <li><strong>180.000 F</strong> → <span>1.000.000 F</span></li>
+        <li><strong>300.000 F</strong> → <span>1.300.000 F</span></li>
+        <li><strong>500.000 F</strong> → <span>1.800.000 F</span></li>
+        <li><strong>700.000 F</strong> → <span>2.000.000 F</span></li>
+        <li><strong>800.000 F</strong> → <span>3.578.000 F</span></li>
+        <li><strong>1.000.000 F</strong> → <span>5.346.000 F</span></li>
+        <li><strong>1.500.000 F</strong> → <span>6.000.000 F</span></li>
+        <li><strong>2.000.000 F</strong> → <span>7.213.000 F</span></li>
+        <li><strong>3.000.000 F</strong> → <span>8.768.000 F</span></li>
+      </ul>
+      <p class="note">💎 Le plan VIP est conçu pour les investisseurs expérimentés à la recherche de rendements élevés.</p>
+    </div>
+
+  </div>
+
+  <div class="custom-plan">
+    <p>🔔 <strong>NB :</strong> Si votre placement ne figure pas, merci de nous signaler le montant que vous souhaitez lancer.</p>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Contact & Ouverture de Compte</h2>
+  <form action="https://formspree.io/f/xpwyydeb" method="POST">
+    <label for="nom">Nom complet</label>
+    <input type="text" name="nom" id="nom" required />
+
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" required />
+
+    <label for="telephone">Numéro de téléphone</label>
+    <input type="tel" name="telephone" id="telephone" required placeholder="+*** 000 99 99 99" />
+
+    <label for="pays">Pays</label>
+    <select name="pays" id="pays" required>
+      <option value="">Sélectionner votre pays</option>
+      <option>Algérie</option>
+      <option>Bénin</option>
+      <option>Burkina Faso</option>
+      <option>Burundi</option>
+      <option>Cameroun</option>
+      <option>Cap-Vert</option>
+      <option>Comores</option>
+      <option>Congo (Brazzaville)</option>
+      <option>Côte d’Ivoire</option>
+      <option>Djibouti</option>
+      <option>Gabon</option>
+      <option>Guinée équatoriale</option>
+      <option>Guinée</option>
+      <option>Madagascar</option>
+      <option>Mali</option>
+      <option>Mauritanie</option>
+      <option>Niger</option>
+      <option>République centrafricaine</option>
+      <option>RDC</option>
+      <option>Sénégal</option>
+      <option>Tchad</option>
+      <option>Togo</option>
+      <option>Autre</option>
+    </select>
+
+    <label for="abonnement">Type d'abonnement</label>
+    <select name="abonnement" id="abonnement" required>
+      <option value="">Choisir un abonnement</option>
+      <option value="accessible">Accessible</option>
+      <option value="standard">Standard</option>
+      <option value="vip">VIP</option>
+    </select>
+
+    <button class="btn" type="submit">Envoyer</button>
+  </form>
+</section>
+</main>
+
+<footer class="footer">
+  © 2025 CAPITALINVEST — Tous droits réservés
+</footer>
+
+<script>
+  const liveMarkets = [
+    {symbol:'AFR', name:'Afriland', price:1250, change: +1.2, volume: 15000},
+    {symbol:'COF', name:'Cofina', price:860, change: -0.8, volume: 8000},
+    {symbol:'MTN', name:'MTN Mobile', price:14200, change: +0.5, volume: 12000},
+    {symbol:'SGB', name:'SGBC', price:420, change: +2.1, volume: 22000},
+    {symbol:'BNP', name:'BNP Paribas', price:10250, change: -1.5, volume: 5000}
+  ];
+  liveMarkets.forEach(m => m.history = [m.price]);
+
+  function renderLiveMarket() {
+    const tbody = document.querySelector('#live-market-table tbody');
+    tbody.innerHTML = '';
+    liveMarkets.forEach((m, i) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${m.symbol}</td>
+        <td>${m.name}</td>
+        <td>${m.price.toLocaleString()}</td>
+        <td class="${m.change >=0 ? 'price-up' : 'price-down'}">
+          ${m.change >=0 ? '+' : ''}${m.change.toFixed(2)}%
+          <canvas id="spark-${i}" width="100" height="30"></canvas>
+        </td>
+        <td>${m.volume.toLocaleString()}</td>
+      `;
+      tbody.appendChild(tr);
+      drawSparkline(`spark-${i}`, m.history);
+    });
+  }
+
+  function drawSparkline(id, data) {
+    const canvas = document.getElementById(id);
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    const max = Math.max(...data);
+    const min = Math.min(...data);
+    const stepX = canvas.width / (data.length-1);
+
+    ctx.beginPath();
+    ctx.moveTo(0, canvas.height - ((data[0]-min)/(max-min))*canvas.height);
+    for(let i=1;i<data.length;i++){
+      const x = stepX * i;
+      const y = canvas.height - ((data[i]-min)/(max-min))*canvas.height;
+      ctx.lineTo(x,y);
+    }
+    ctx.strokeStyle = "#0b6f2b";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  }
+
+  setInterval(() => {
+    liveMarkets.forEach(m => {
+      const delta = (Math.random() * 2 - 1) * 0.02 * m.price;
+      m.price = +(m.price + delta).toFixed(0);
+      m.change = ((delta / m.price) * 100);
+      m.volume = Math.max(0, m.volume + Math.floor(Math.random() * 5000 - 2500));
+      m.history.push(m.price);
+      if(m.history.length > 20) m.history.shift();
+    });
+    renderLiveMarket();
+  }, 5000);
+
+  renderLiveMarket();
+
+  /* ---- Slider Témoignages ---- */
+  let slider = document.getElementById('testimonial-slider');
+  let index = 0;
+  function showTestimonial(i) {
+    index = (i + slider.children.length) % slider.children.length;
+    slider.style.transform = `translateX(-${index * 100}%)`;
+  }
+  function nextTestimonial(){ showTestimonial(index+1); }
+  function prevTestimonial(){ showTestimonial(index-1); }
+  setInterval(nextTestimonial, 5000);
+
+/* ---- Compteurs économiques avec incrémentation automatique toutes les 9h ---- */
+const clientCards = document.querySelectorAll('.client-card');
+
+const baseValues = {
+  "Gabon": 28000, "Cameroun": 18000, "Tchad": 7500, "Congo (Brazzaville)": 16000,
+  "République centrafricaine": 6000, "RDC": 12500, "Guinée équatoriale": 22000,
+  "Sénégal": 23000, "Côte d’Ivoire": 26000, "Mali": 11000, "Togo": 13000,
+  "Bénin": 14000, "Burkina Faso": 10000, "Niger": 8000, "Guinée": 12000,
+  "Guinée-Bissau": 7000, "Algérie": 30000, "Burundi": 6500, "Cap-Vert": 11000,
+  "Comores": 7000, "Djibouti": 10000, "Madagascar": 13000, "Réunion": 35000, "Guyane": 32000
+};
+
+function initEconomicCounters() {
+  clientCards.forEach(card => {
+    const pays = card.dataset.pays;
+    const key = `clients_${pays}`;
+    const keyDate = `${key}_date`;
+    const base = baseValues[pays] || 10000;
+
+    let val = parseInt(localStorage.getItem(key)) || base;
+    let lastUpdate = parseInt(localStorage.getItem(keyDate)) || Date.now();
+
+    // Si c’est la première fois, on enregistre la base
+    if (!val) {
+      val = base;
+      localStorage.setItem(key, base);
+      localStorage.setItem(keyDate, Date.now());
+    } else {
+      // Calcul du temps écoulé depuis la dernière mise à jour
+      const last = localStorage.getItem(keyDate);
+      const days = Math.floor((Date.now() - last) / (1000 * 60 * 60 * 24));
+      const steps = Math.floor(days / 3);
+      if (steps > 0) {
+        val = parseInt(val) + steps * 4;
+        localStorage.setItem(key, val);
+        localStorage.setItem(keyDate, Date.now());
+      }
+    }
+// --- Changement d’onglets pour les plans d’abonnement ---
+const tabBtns = document.querySelectorAll('.tab-btn');
+const layers = document.querySelectorAll('.plan-layer');
+
+tabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    tabBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const target = btn.dataset.target;
+    layers.forEach(layer => {
+      layer.classList.toggle('visible', layer.id === target);
+    });
+  });
+});
+
+
+    // Création du badge animé
+    const countEl = document.createElement('div');
+    countEl.className = 'client-count';
+    countEl.textContent = '...';
+    card.appendChild(countEl);
+
+    let current = 0;
+    const target = parseInt(val);
+    const step = Math.ceil(target / 60);
+    const interval = setInterval(() => {
+      current += step;
+      if (current >= target) {
+        current = target;
+        clearInterval(interval);
+      }
+      countEl.textContent = `${current.toLocaleString()} abonnés`;
+    }, 20);
+  });
+}
+
+initEconomicCounters();
+// --- Apparition fluide des sections au scroll ---
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, {threshold: 0.2});
+
+document.querySelectorAll('section').forEach(sec => observer.observe(sec));
+
+
+</script>
+</body>
+</html>
