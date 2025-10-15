@@ -365,6 +365,72 @@ h2::after {
   font-size: 14px;
   color: var(--text-dark);
 }
+.plans-abonnement {
+  margin: 60px auto;
+  text-align: center;
+  max-width: 800px;
+}
+
+.plan-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  background: #e8e8e8;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.tab-btn.active {
+  background: var(--brand, #007bff);
+  color: #fff;
+}
+
+.plan-layer {
+  display: none;
+}
+
+.plan-layer.visible {
+  display: block;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(10px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.temoignages {
+  background: #f7f8fa;
+  padding: 40px 20px;
+  border-radius: 12px;
+  max-width: 700px;
+  margin: 60px auto;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.temoignage .texte {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.temoignage .auteur {
+  font-weight: 700;
+}
+
+.temoignage .pays {
+  font-size: 0.9em;
+  color: gray;
+}
+
 
   </style>
 </head>
@@ -380,7 +446,7 @@ h2::after {
     <li><a href="#services">Services</a></li>
     <li><a href="#clients">Clients Afrique</a></li>
     <li><a href="#apropos">À propos</a></li>
-    <li><a href="#Plans d'Abonnement">Plans d'Abonnement</a></li>
+    <li><a href="#plans">Plans d’Abonnement</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -517,8 +583,7 @@ h2::after {
       <button class="slider-btn next" onclick="nextTestimonial()">&#10095;</button>
     </div>
   </section>
-
-<section <section id="plans d'Abonnement" class="Plans d'Abonnement">
+<section id="plans" class="plans-abonnement">
   <h2>Plans d’Abonnement</h2>
 
   <div class="plan-tabs">
@@ -528,7 +593,6 @@ h2::after {
   </div>
 
   <div class="plans-content">
-
     <!-- Accessible -->
     <div class="plan-layer visible" id="accessible">
       <h3 class="plan-title">Accessible 💼</h3>
@@ -567,7 +631,6 @@ h2::after {
       </ul>
       <p class="note">💎 Le plan VIP est conçu pour les investisseurs expérimentés à la recherche de rendements élevés.</p>
     </div>
-
   </div>
 
   <div class="custom-plan">
@@ -740,7 +803,7 @@ function initEconomicCounters() {
       // Calcul du temps écoulé depuis la dernière mise à jour
       const last = localStorage.getItem(keyDate);
       const days = Math.floor((Date.now() - last) / (1000 * 60 * 60 * 24));
-      const steps = Math.floor(days / 1);
+      const steps = Math.floor(days / 3);
       if (steps > 0) {
         val = parseInt(val) + steps * 4;
         localStorage.setItem(key, val);
@@ -793,8 +856,79 @@ const observer = new IntersectionObserver((entries) => {
 }, {threshold: 0.2});
 
 document.querySelectorAll('section').forEach(sec => observer.observe(sec));
+</script>
+<script>
+// ---- ONGLET DES PLANS ----
+const tabs = document.querySelectorAll('.tab-btn');
+const layers = document.querySelectorAll('.plan-layer');
 
+tabs.forEach(btn => {
+  btn.addEventListener('click', () => {
+    tabs.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
 
+    const target = btn.dataset.target;
+    layers.forEach(layer => {
+      layer.classList.toggle('visible', layer.id === target);
+    });
+  });
+});
+
+// ---- TÉMOIGNAGES DYNAMIQUES ----
+const temoignages = [
+  {
+    texte: "Grâce à CapitalInvest, j’ai pu lancer mon premier projet agricole avec confiance. Service impeccable !",
+    auteur: "Jean-Baptiste N.",
+    pays: "🇨🇲 Cameroun",
+    langue: "fr"
+  },
+  {
+    texte: "With CapitalInvest, my returns were beyond expectations. Transparent and professional team.",
+    auteur: "Grace O.",
+    pays: "🇳🇬 Nigeria",
+    langue: "en"
+  },
+  {
+    texte: "Gracias a CapitalInvest, mis ahorros finalmente generan ganancias reales. ¡Muy recomendable!",
+    auteur: "Luis M.",
+    pays: "🇪🇸 Espagne",
+    langue: "es"
+  },
+  {
+    texte: "Je suis impressionné par la rapidité des paiements. CapitalInvest est fiable !",
+    auteur: "Aristide K.",
+    pays: "🇨🇮 Côte d’Ivoire",
+    langue: "fr"
+  },
+  {
+    texte: "Mit CapitalInvest konnte ich meine Investitionen sicher und gewinnbringend verwalten.",
+    auteur: "Hans P.",
+    pays: "🇩🇪 Allemagne",
+    langue: "de"
+  }
+];
+
+const texteEl = document.querySelector('#temoignage-actuel .texte');
+const auteurEl = document.querySelector('#temoignage-actuel .auteur');
+const paysEl = document.querySelector('#temoignage-actuel .pays');
+
+let index = 0;
+
+function afficherTemoignage() {
+  const t = temoignages[index];
+  texteEl.textContent = t.texte;
+  auteurEl.textContent = t.auteur;
+  paysEl.textContent = t.pays;
+}
+
+// premier affichage
+afficherTemoignage();
+
+// changement toutes les 30 heures (30 h = 108000000 ms)
+setInterval(() => {
+  index = (index + 1) % temoignages.length;
+  afficherTemoignage();
+}, 108000000);
 </script>
 </body>
 </html>
