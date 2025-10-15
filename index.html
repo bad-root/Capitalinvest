@@ -17,12 +17,14 @@
       --border-light: #e5e7eb;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text-dark);
-      line-height: 1.6;
-    }
+
+/* ---- Amélioration visuelle globale ---- */
+body {
+  background: linear-gradient(180deg, #f7f9f8 0%, #edf3ee 100%);
+  font-family: 'Inter', sans-serif;
+  color: var(--text-dark);
+  line-height: 1.6;
+ }
     a { text-decoration: none; }
     header {
       background: var(--brand);
@@ -196,6 +198,174 @@
   margin-top: 6px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
+
+
+/* Hero avec effet de profondeur */
+.hero {
+  background: linear-gradient(135deg, #0b6f2b, #0e9c3d);
+  box-shadow: 0 8px 24px rgba(11, 111, 43, 0.3);
+  animation: fadeIn 1s ease-out;
+}
+
+/* Cartes modernisées */
+.service-card, .client-card, .testimonial-card, .about, .contact {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(11,111,43,0.1);
+}
+.service-card:hover, .client-card:hover, .testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+/* Boutons */
+.btn {
+  background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+  box-shadow: 0 4px 10px rgba(11, 111, 43, 0.25);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(11,111,43,0.35);
+}
+
+/* Effet de survol sur les drapeaux */
+.client-card img {
+  transition: transform 0.3s ease;
+}
+.client-card:hover img {
+  transform: scale(1.1);
+}
+
+/* Animation douce d’apparition */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Titres stylisés */
+h2 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 3px;
+  background: var(--brand);
+  border-radius: 2px;
+}
+/* ---- Section Plans d’abonnement ---- */
+#plans {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  padding: 30px 20px;
+  margin-top: 40px;
+}
+
+.plan-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background: #f0f8f3;
+  color: var(--brand-dark);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 10px 22px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  background: var(--brand);
+  color: white;
+}
+
+.tab-btn.active {
+  background: var(--brand-dark);
+  color: white;
+  box-shadow: 0 4px 12px rgba(11,111,43,0.3);
+}
+
+.plans-content {
+  position: relative;
+}
+
+.plan-layer {
+  display: none;
+  animation: fadeLayer 0.5s ease;
+}
+
+.plan-layer.visible {
+  display: block;
+}
+
+@keyframes fadeLayer {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.plan-title {
+  color: var(--brand-dark);
+  font-size: 20px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.plan-list {
+  list-style: none;
+  background: #f9fafb;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.plan-list li {
+  display: flex;
+  justify-content: space-between;
+  background: white;
+  border-radius: 8px;
+  padding: 8px 14px;
+  margin: 6px 0;
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.plan-list strong {
+  color: var(--brand-dark);
+}
+
+.plan-list span {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.note {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.custom-plan {
+  background: #eaf5ef;
+  border-radius: 10px;
+  padding: 14px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-dark);
+}
+
   </style>
 </head>
 <body>
@@ -210,6 +380,7 @@
     <li><a href="#services">Services</a></li>
     <li><a href="#clients">Clients Afrique</a></li>
     <li><a href="#apropos">À propos</a></li>
+    <li><a href="#Plans d'Abonnement">Plans d'Abonnement</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -276,13 +447,12 @@
   <div class="region-group">
     <h3>🌍 Afrique Centrale</h3>
     <div class="client-cards region-centrale">
-      <div class="client-card" data-pays="Cameroun"><img src="https://flagcdn.com/w160/cm.png" alt="Cameroun" /><div class="name">Cameroun</div></div>
-      <div class="client-card" data-pays="Tchad"><img src="https://flagcdn.com/w160/td.png" alt="Tchad" /><div class="name">Tchad</div></div>
       <div class="client-card" data-pays="Gabon"><img src="https://flagcdn.com/w160/ga.png" alt="Gabon" /><div class="name">Gabon</div></div>
+      <div class="client-card" data-pays="Tchad"><img src="https://flagcdn.com/w160/td.png" alt="Tchad" /><div class="name">Tchad</div></div>
+      <div class="client-card" data-pays="Cameroun"><img src="https://flagcdn.com/w160/cm.png" alt="Cameroun" /><div class="name">Cameroun</div></div>
       <div class="client-card" data-pays="Congo (Brazzaville)"><img src="https://flagcdn.com/w160/cg.png" alt="Congo" /><div class="name">Congo (Brazzaville)</div></div>
       <div class="client-card" data-pays="République centrafricaine"><img src="https://flagcdn.com/w160/cf.png" alt="République centrafricaine" /><div class="name">République centrafricaine</div></div>
       <div class="client-card" data-pays="RDC"><img src="https://flagcdn.com/w160/cd.png" alt="RDC" /><div class="name">République démocratique du Congo</div></div>
-      <div class="client-card" data-pays="Gabon"><img src="https://flagcdn.com/w160/ga.png" alt="Gabon" /><div class="name">Gabon</div></div>
       <div class="client-card" data-pays="Guinée équatoriale"><img src="https://flagcdn.com/w160/gq.png" alt="Guinée équatoriale" /><div class="name">Guinée équatoriale</div></div>
     </div>
   </div>
@@ -347,6 +517,64 @@
       <button class="slider-btn next" onclick="nextTestimonial()">&#10095;</button>
     </div>
   </section>
+
+<section <section id="plans d'Abonnement" class="Plans d'Abonnement">
+  <h2>Plans d’Abonnement</h2>
+
+  <div class="plan-tabs">
+    <button class="tab-btn active" data-target="accessible">Accessible</button>
+    <button class="tab-btn" data-target="standard">Standard</button>
+    <button class="tab-btn" data-target="vip">VIP</button>
+  </div>
+
+  <div class="plans-content">
+
+    <!-- Accessible -->
+    <div class="plan-layer visible" id="accessible">
+      <h3 class="plan-title">Accessible 💼</h3>
+      <ul class="plan-list">
+        <li><strong>30.000 F</strong> → <span>230.000 F</span></li>
+        <li><strong>45.000 F</strong> → <span>390.000 F</span></li>
+      </ul>
+      <p class="note">💡 Idéal pour les nouveaux investisseurs qui souhaitent démarrer en toute sécurité.</p>
+    </div>
+
+    <!-- Standard -->
+    <div class="plan-layer" id="standard">
+      <h3 class="plan-title">Standard 💹</h3>
+      <ul class="plan-list">
+        <li><strong>50.000 F</strong> → <span>450.000 F</span></li>
+        <li><strong>60.000 F</strong> → <span>530.000 F</span></li>
+        <li><strong>70.000 F</strong> → <span>600.000 F</span></li>
+        <li><strong>80.000 F</strong> → <span>650.000 F</span></li>
+      </ul>
+      <p class="note">⭐ Recommandé pour les investisseurs intermédiaires souhaitant un meilleur rendement.</p>
+    </div>
+
+    <!-- VIP -->
+    <div class="plan-layer" id="vip">
+      <h3 class="plan-title">VIP 👑</h3>
+      <ul class="plan-list">
+        <li><strong>180.000 F</strong> → <span>1.000.000 F</span></li>
+        <li><strong>300.000 F</strong> → <span>1.300.000 F</span></li>
+        <li><strong>500.000 F</strong> → <span>1.800.000 F</span></li>
+        <li><strong>700.000 F</strong> → <span>2.000.000 F</span></li>
+        <li><strong>800.000 F</strong> → <span>3.578.000 F</span></li>
+        <li><strong>1.000.000 F</strong> → <span>5.346.000 F</span></li>
+        <li><strong>1.500.000 F</strong> → <span>6.000.000 F</span></li>
+        <li><strong>2.000.000 F</strong> → <span>7.213.000 F</span></li>
+        <li><strong>3.000.000 F</strong> → <span>8.768.000 F</span></li>
+      </ul>
+      <p class="note">💎 Le plan VIP est conçu pour les investisseurs expérimentés à la recherche de rendements élevés.</p>
+    </div>
+
+  </div>
+
+  <div class="custom-plan">
+    <p>🔔 <strong>NB :</strong> Si votre placement ne figure pas, merci de nous signaler le montant que vous souhaitez lancer.</p>
+  </div>
+</section>
+
 <section id="contact" class="contact">
   <h2>Contact & Ouverture de Compte</h2>
   <form action="https://formspree.io/f/xpwyydeb" method="POST">
@@ -481,39 +709,16 @@
   function prevTestimonial(){ showTestimonial(index-1); }
   setInterval(nextTestimonial, 5000);
 
-/* ---- Compteurs de clients basés sur la prospérité économique ---- */
+/* ---- Compteurs économiques avec incrémentation automatique toutes les 9h ---- */
 const clientCards = document.querySelectorAll('.client-card');
 
 const baseValues = {
-  // 🌍 Afrique Centrale
-  "Cameroun": 14000,
-  "Gabon": 20000,
-  "Tchad": 6500,
-  "Congo (Brazzaville)": 13000,
-  "République centrafricaine": 6000,
-  "RDC": 11000,
-  "Guinée équatoriale": 17000,
-
-  // 🌍 Afrique de l’Ouest
-  "Sénégal": 18000,
-  "Côte d’Ivoire": 19000,
-  "Mali": 9000,
-  "Togo": 12000,
-  "Bénin": 12500,
-  "Burkina Faso": 8500,
-  "Niger": 8000,
-  "Guinée": 9500,
-  "Guinée-Bissau": 6000,
-
-  // 🌍 Autres pays francophones
-  "Algérie": 20000,
-  "Burundi": 6000,
-  "Cap-Vert": 9500,
-  "Comores": 5500,
-  "Djibouti": 7000,
-  "Madagascar": 13000,
-  "Réunion": 18000,
-  "Guyane": 15000
+  "Gabon": 28000, "Cameroun": 18000, "Tchad": 7500, "Congo (Brazzaville)": 16000,
+  "République centrafricaine": 6000, "RDC": 12500, "Guinée équatoriale": 22000,
+  "Sénégal": 23000, "Côte d’Ivoire": 26000, "Mali": 11000, "Togo": 13000,
+  "Bénin": 14000, "Burkina Faso": 10000, "Niger": 8000, "Guinée": 12000,
+  "Guinée-Bissau": 7000, "Algérie": 30000, "Burundi": 6500, "Cap-Vert": 11000,
+  "Comores": 7000, "Djibouti": 10000, "Madagascar": 13000, "Réunion": 35000, "Guyane": 32000
 };
 
 function initEconomicCounters() {
@@ -521,9 +726,10 @@ function initEconomicCounters() {
     const pays = card.dataset.pays;
     const key = `clients_${pays}`;
     const keyDate = `${key}_date`;
-
     const base = baseValues[pays] || 10000;
-    let val = localStorage.getItem(key);
+
+    let val = parseInt(localStorage.getItem(key)) || base;
+    let lastUpdate = parseInt(localStorage.getItem(keyDate)) || Date.now();
 
     // Si c’est la première fois, on enregistre la base
     if (!val) {
@@ -534,13 +740,29 @@ function initEconomicCounters() {
       // Calcul du temps écoulé depuis la dernière mise à jour
       const last = localStorage.getItem(keyDate);
       const days = Math.floor((Date.now() - last) / (1000 * 60 * 60 * 24));
-      const steps = Math.floor(days / 3);
+      const steps = Math.floor(days / 1);
       if (steps > 0) {
         val = parseInt(val) + steps * 4;
         localStorage.setItem(key, val);
         localStorage.setItem(keyDate, Date.now());
       }
     }
+// --- Changement d’onglets pour les plans d’abonnement ---
+const tabBtns = document.querySelectorAll('.tab-btn');
+const layers = document.querySelectorAll('.plan-layer');
+
+tabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    tabBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const target = btn.dataset.target;
+    layers.forEach(layer => {
+      layer.classList.toggle('visible', layer.id === target);
+    });
+  });
+});
+
 
     // Création du badge animé
     const countEl = document.createElement('div');
@@ -563,6 +785,15 @@ function initEconomicCounters() {
 }
 
 initEconomicCounters();
+// --- Apparition fluide des sections au scroll ---
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, {threshold: 0.2});
+
+document.querySelectorAll('section').forEach(sec => observer.observe(sec));
+
 
 </script>
 </body>
